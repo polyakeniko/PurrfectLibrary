@@ -1,0 +1,65 @@
+.button{
+    background-color: #a98361;
+
+}
+.button:hover{
+    background-color: #e8c3a4;
+}
+.button:focus{
+    background-color: #bd743d;
+}
+
+.introduction{
+    background: linear-gradient(to bottom, #a97851, #6b4c33);
+}
+
+.book-header{
+    background-color: #483323;
+}
+
+body .section{
+    background-color: #d5ae8d;
+}
+.animation{
+
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+.review-color{
+    background-color: #e7c6a7;
+}
+
+
+
+#star-rating label {
+    color: #ccc;
+}
+
+
+#star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107;
+}
+
+/* Hover hatás */
+#star-rating label:hover,
+#star-rating label:hover ~ label {
+    color: #ffc107;
+}

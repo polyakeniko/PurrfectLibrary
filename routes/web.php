@@ -31,15 +31,18 @@ Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.
 Route::get('create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
+Route::get('/members', [UserController::class, 'index'])->name('members.index');
+
 Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
 Route::post('/loans/{loan}/return', [LoanController::class, 'markAsReturned'])->name('loans.return');
+Route::post('/loans/{loan}/unreturn', [LoanController::class, 'markAsNotReturned'])->name('loans.unreturn');
+
 
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 Route::post('/reservations/{reservation}/status', [ReservationController::class, 'updateStatus'])->name('reservations.updateStatus');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/members', [UserController::class, 'index'])->name('members.index');
     Route::get('/members/create', [UserController::class, 'create'])->name('members.create');
     Route::post('/members', [UserController::class, 'store'])->name('members.store');
     Route::get('/members/{user}/edit', [UserController::class, 'edit'])->name('members.edit');

@@ -25,6 +25,7 @@
                                 <th class="px-4 py-2">Borrower</th>
                                 <th class="px-4 py-2">Loan Date</th>
                                 <th class="px-4 py-2">Return Due Date</th>
+                                <th class="px-4 py-2">Late fee</th>
                                 <th class="px-4 py-2">Actions</th>
                             </tr>
                             </thead>
@@ -35,11 +36,19 @@
                                     <td class="border px-4 py-2">{{ $loan->user->name }}</td>
                                     <td class="border px-4 py-2">{{ $loan->loan_date }}</td>
                                     <td class="border px-4 py-2">{{ $loan->return_due_date ? : 'Not Set' }}</td>
+                                    <td class="border px-4 py-2">{{ $loan->late_fee}}</td>
                                     <td class="border px-4 py-2">
+                                        @if ($loan->returned_date === null)
                                         <form action="{{ route('loans.return', $loan) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="bg-green-500 px-4 py-2 rounded">Mark as Returned</button>
+                                            <button type="submit" class="bg-red-500 px-4 py-2 rounded">Mark as Returned</button>
                                         </form>
+                                        @else
+                                            <form action="{{ route('loans.unreturn', $loan) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="bg-green-500 px-4 py-2 rounded">Mark as Not Returned</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

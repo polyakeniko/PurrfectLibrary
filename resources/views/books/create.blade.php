@@ -47,7 +47,7 @@
                             <textarea name="description" id="description" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded"></textarea>
                         </div>
 
-                        <button type="submit" class="bg-blue-500 px-4 py-2 rounded">Add Book</button>
+                        <button type="submit" class="button px-4 py-2 rounded">Add Book</button>
                     </form>
                 </div>
             </div>

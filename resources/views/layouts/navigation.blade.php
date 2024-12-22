@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class=" border-b border-white" style="background: linear-gradient(to bottom, #a97851, #6b4c33)">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
                     </a>
                 </div>
 
@@ -33,6 +33,9 @@
                             </x-nav-link>
                             <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reseravtions.index')">
                                 {{ __('Reservations') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                                {{ __('Members') }}
                             </x-nav-link>
                             @endif
                         @endauth
@@ -74,12 +77,12 @@
                 </div>
             @else
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                    <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-5 border border-transparent text-sm leading-4 font-medium rounded-md text-white hover:bg-orange-300 focus:outline-none transition ease-in-out duration-150">
                         Log in
                     </a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-5 border border-transparent text-sm leading-4 font-medium rounded-md text-white hover:bg-orange-300 focus:outline-none transition ease-in-out duration-150">
                             Register
                         </a>
                     @endif
@@ -88,7 +91,7 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-black hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -130,8 +133,8 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             @auth
                 <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-orange-300">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-orange-200">{{ Auth::user()->email }}</div>
                 </div>
 
                 <div class="mt-3 space-y-1">

@@ -18,26 +18,26 @@
 
                     <p><strong>Available Copies:</strong> {{ $availableCopies }}</p>
                     @if(Auth::user()->role == 'user')
-                    @auth
-                        @if($availableCopies > 0)
-                            @if(!$userHasReserved && !$userHasLoaned)
-                                <form action="{{ route('books.reserve', $book) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="bg-yellow-500 px-4 py-2 rounded">Reserve this book</button>
-                                </form>
-                            @elseif($userHasReserved)
-                                <form action="{{ route('books.undoReservation', $book) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 px-4 py-2 rounded">Undo Reservation</button>
-                                </form>
+                        @auth
+                            @if($availableCopies > 0)
+                                @if(!$userHasReserved && !$userHasLoaned)
+                                    <form action="{{ route('books.reserve', $book) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-green-200 px-4 py-2 rounded">Reserve this book</button>
+                                    </form>
+                                @elseif($userHasReserved)
+                                    <form action="{{ route('books.undoReservation', $book) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 px-4 py-2 rounded">Undo Reservation</button>
+                                    </form>
+                                @endif
+                            @else
+                                <p class="text-red-700">No available copies to loan or reserve.</p>
                             @endif
                         @else
-                            <p>No available copies to loan or reserve.</p>
-                        @endif
-                    @else
-                        <p><a href="{{ route('login') }}" class="text-blue-500">Login to reserve this book</a></p>
-                    @endauth
+                            <p><a href="{{ route('login') }}" class="text-blue-500">Login to reserve this book</a></p>
+                        @endauth
                     @endif
 
                     @auth
@@ -60,12 +60,19 @@
                         @if($book->reviews->count() > 0)
                             <ul class="list-disc pl-5">
                                 @foreach($book->reviews as $review)
-                                    <li>
-                                        <p><strong>Rating:</strong> {{ $review->rating }}</p>
+                                    <li class="{{ $loop->odd ? 'review-color' : 'bg-orange-100' }} p-4 rounded mb-4">
+                                        <p>
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if($i <= $review->rating)
+                                                    <i class="fa fa-star text-yellow-500"></i>
+                                                @else
+                                                    <i class="fa fa-star text-gray-300"></i>
+                                                @endif
+                                            @endfor
+                                        </p>
                                         <p><strong>Review:</strong> {{ $review->review }}</p>
                                         <p><strong>Reviewed by:</strong> {{ $review->user->name }}</p>
                                     </li>
-                                    <br>
                                 @endforeach
                             </ul>
                         @else
@@ -74,59 +81,59 @@
                     </div>
 
                     @if(Auth::user()->role == 'user')
-                    @auth
-                        @php
-                            $userReview = $book->reviews()->where('user_id', auth()->id())->first();
-                        @endphp
+                        @auth
+                            @php
+                                $userReview = $book->reviews()->where('user_id', auth()->id())->first();
+                            @endphp
 
-                        @if($userReview)
-                            <div class="mt-6">
-                                <h4 class="text-xl font-semibold">Update Your Review:</h4>
-                                <form action="{{ route('books.review', $book) }}" method="POST">
-                                    @csrf
-                                    <div class="mb-4">
-                                        <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                        <select id="rating" name="rating" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
-                                            <option value="1" {{ $userReview->rating == 1 ? 'selected' : '' }}>1 - Poor</option>
-                                            <option value="2" {{ $userReview->rating == 2 ? 'selected' : '' }}>2 - Fair</option>
-                                            <option value="3" {{ $userReview->rating == 3 ? 'selected' : '' }}>3 - Good</option>
-                                            <option value="4" {{ $userReview->rating == 4 ? 'selected' : '' }}>4 - Very Good</option>
-                                            <option value="5" {{ $userReview->rating == 5 ? 'selected' : '' }}>5 - Excellent</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
-                                        <textarea id="review" name="review" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>{{ $userReview->review }}</textarea>
-                                    </div>
-                                    <button type="submit" class="bg-blue-500 px-4 py-2 rounded">Update Review</button>
-                                </form>
-                            </div>
+                            @if($userReview)
+                                <div class="mt-6">
+                                    <h4 class="text-xl font-semibold">Update Your Review:</h4>
+                                    <form action="{{ route('books.review', $book) }}" method="POST">
+                                        @csrf
+                                        <div class="mb-4">
+                                            <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
+                                            <select id="rating" name="rating" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>
+                                                <option value="1" {{ $userReview->rating == 1 ? 'selected' : '' }}>1 - Poor</option>
+                                                <option value="2" {{ $userReview->rating == 2 ? 'selected' : '' }}>2 - Fair</option>
+                                                <option value="3" {{ $userReview->rating == 3 ? 'selected' : '' }}>3 - Good</option>
+                                                <option value="4" {{ $userReview->rating == 4 ? 'selected' : '' }}>4 - Very Good</option>
+                                                <option value="5" {{ $userReview->rating == 5 ? 'selected' : '' }}>5 - Excellent</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
+                                            <textarea id="review" name="review" rows="4" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>{{ $userReview->review }}</textarea>
+                                        </div>
+                                        <button type="submit" class="button px-4 py-2 rounded">Update Review</button>
+                                    </form>
+                                </div>
+                            @else
+                                <div class="mt-6">
+                                    <h4 class="text-xl font-semibold">Write a Review:</h4>
+                                    <form action="{{ route('books.review', $book) }}" method="POST">
+                                        @csrf
+                                        <div class="mb-4">
+                                            <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
+                                            <select id="rating" name="rating" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>
+                                                <option value="1">1 - Poor</option>
+                                                <option value="2">2 - Fair</option>
+                                                <option value="3">3 - Good</option>
+                                                <option value="4">4 - Very Good</option>
+                                                <option value="5">5 - Excellent</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
+                                            <textarea id="review" name="review" rows="4" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required></textarea>
+                                        </div>
+                                        <button type="submit" class="button px-4 py-2 rounded">Submit Review</button>
+                                    </form>
+                                </div>
+                            @endif
                         @else
-                            <div class="mt-6">
-                                <h4 class="text-xl font-semibold">Write a Review:</h4>
-                                <form action="{{ route('books.review', $book) }}" method="POST">
-                                    @csrf
-                                    <div class="mb-4">
-                                        <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                        <select id="rating" name="rating" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
-                                            <option value="1">1 - Poor</option>
-                                            <option value="2">2 - Fair</option>
-                                            <option value="3">3 - Good</option>
-                                            <option value="4">4 - Very Good</option>
-                                            <option value="5">5 - Excellent</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
-                                        <textarea id="review" name="review" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded" required></textarea>
-                                    </div>
-                                    <button type="submit" class="bg-blue-500 px-4 py-2 rounded">Submit Review</button>
-                                </form>
-                            </div>
-                        @endif
-                    @else
-                        <p><a href="{{ route('login') }}" class="text-blue-500">Login to write a review</a></p>
-                    @endauth
+                            <p><a href="{{ route('login') }}" class="text-blue-500">Login to write a review</a></p>
+                        @endauth
                     @endif
                 </div>
             </div>

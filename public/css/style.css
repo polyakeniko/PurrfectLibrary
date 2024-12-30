@@ -46,20 +46,17 @@ body .section{
 .review-color{
     background-color: #e7c6a7;
 }
-
-
-
-#star-rating label {
-    color: #ccc;
+footer {
+    background-color: #6b4c33;
 }
-
-
-#star-rating input[type="radio"]:checked ~ label {
-    color: #ffc107;
+footer a {
+    color: #fff;
+    text-decoration: none;
 }
-
-/* Hover hatás */
-#star-rating label:hover,
-#star-rating label:hover ~ label {
-    color: #ffc107;
+footer a:hover {
+    color: #f9d342;
 }
+.fa-2x {
+    font-size: 1.75rem;
+
+

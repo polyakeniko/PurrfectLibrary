@@ -38,7 +38,7 @@
                                     <td class="border px-4 py-2">
                                         <form action="{{ route('reservations.updateStatus', $reservation) }}" method="POST">
                                             @csrf
-                                            <select name="status" class="border rounded p-2" onchange="this.form.submit()">
+                                            <select name="status" class="border rounded p-2 w-full" onchange="this.form.submit()">
                                                 <option value="pending" {{ $reservation->status === 'pending' ? 'selected' : '' }}>Pending</option>
                                                 <option value="ready" {{ $reservation->status === 'ready' ? 'selected' : '' }}>Ready</option>
                                                 <option value="canceled" {{ $reservation->status === 'canceled' ? 'selected' : '' }}>Canceled</option>

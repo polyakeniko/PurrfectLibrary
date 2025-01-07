@@ -37,6 +37,16 @@
                             <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
                                 {{ __('Members') }}
                             </x-nav-link>
+                            @elseif(Auth::user()->role == 'admin')
+                                <x-nav-link :href="route('librarians.index')" :active="request()->routeIs('librarians.index')">
+                                    {{ __('Librarians') }}
+                                </x-nav-link>
+                                <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
+                                    {{ __('Statistics') }}
+                                </x-nav-link>
+                                <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
+                                    {{ __('Library settings') }}
+                                </x-nav-link>
                             @endif
                         @endauth
                     @endif

@@ -17,8 +17,8 @@
                     <p><strong>Description:</strong> {{ $book->description }}</p>
 
                     <p><strong>Available Copies:</strong> {{ $availableCopies }}</p>
-                    @if(Auth::user()->role == 'user')
-                        @auth
+                    @auth
+                        @if(Auth::user()->role == 'user')
                             @if($availableCopies > 0)
                                 @if(!$userHasReserved && !$userHasLoaned)
                                     <form action="{{ route('books.reserve', $book) }}" method="POST">
@@ -35,10 +35,8 @@
                             @else
                                 <p class="text-red-700">No available copies to loan or reserve.</p>
                             @endif
-                        @else
-                            <p><a href="{{ route('login') }}" class="text-blue-500">Login to reserve this book</a></p>
-                        @endauth
-                    @endif
+                        @endif
+                    @endauth
 
                     @auth
                         @if(auth()->user()->role === 'librarian')
@@ -80,8 +78,8 @@
                         @endif
                     </div>
 
-                    @if(Auth::user()->role == 'user')
-                        @auth
+                    @auth
+                        @if(auth()->user()->role == 'user')
                             @php
                                 $userReview = $book->reviews()->where('user_id', auth()->id())->first();
                             @endphp
@@ -131,10 +129,8 @@
                                     </form>
                                 </div>
                             @endif
-                        @else
-                            <p><a href="{{ route('login') }}" class="text-blue-500">Login to write a review</a></p>
-                        @endauth
-                    @endif
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>

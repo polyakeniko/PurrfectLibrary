@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewBookNotification;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Loan;
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class BookController extends Controller
 {
@@ -175,7 +178,12 @@ class BookController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        Book::create($validated);
+        $book = Book::create($validated);
+
+        $users = User::all();
+//        foreach ($users as $user) {
+//            Mail::to($user->email)->send(new NewBookNotification($book));
+//        }
 
         return redirect()->route('books.index')->with('success', 'Book added successfully.');
     }

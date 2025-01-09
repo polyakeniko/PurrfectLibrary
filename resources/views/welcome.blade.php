@@ -205,7 +205,7 @@
         </div>
 
         <div class="w-full text-white p-4 text-center">
-            © 2023 Copyright:
+            © 2025 Copyright:
             <a href="#">Cats </a>
         </div>
     </footer>

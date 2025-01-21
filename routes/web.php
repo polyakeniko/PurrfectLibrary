@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\LoanController;
@@ -17,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
-
+Route::get('/', [AdminSettingController::class, 'getDescription'])->name('home');
 //user
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/borrowed', [UserController::class, 'show'])->name('user.borrowed');
@@ -74,4 +75,6 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(functio
     ]);
     Route::put('librarians/{librarian}/activate', [LibrarianController::class, 'activate'])->name('librarians.activate');
     Route::get('admin/statistics', [StatisticsController::class, 'index'])->name('admin.statistics');
+    Route::get('/admin/settings', [AdminSettingController::class, 'index'])->name('admin_settings.index');
+    Route::put('/admin/settings/{adminSetting}', [AdminSettingController::class, 'update'])->name('admin_settings.update');
 });

@@ -137,7 +137,7 @@ class BookController extends Controller
             'author' => 'required|string|max:255',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|string',
-            'published_year' => 'nullable|integer',
+            'published_year' => 'nullable|integer|min:1000|max:' . date('Y'),
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -182,9 +182,17 @@ class BookController extends Controller
             'tags' => 'nullable|string|max:255',
             'published_year' => 'nullable|integer|min:1000|max:' . date('Y'),
             'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $book = Book::create($validated);
+        $book = new Book($validated);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $book->image = $imagePath;
+        }
+
+        $book->save();
 
         $users = User::all();
 //        foreach ($users as $user) {

@@ -13,6 +13,18 @@
                         @csrf
                         @method('PUT')
 
+                        @if ($errors->any())
+                            <div class="mb-4">
+                                <div class="text-red-600">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="mb-4">
                             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                             <input type="text" name="title" id="title" value="{{ old('title', $book->title) }}" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>

@@ -8,7 +8,9 @@
             <div class="flex h-full items-center justify-center">
                 <div class="text-white">
                     <h2 class="mb-4 text-5xl font-semibold">Welcome to PurrfectLibrary</h2>
-                    <h4 class="mb-6 text-xl font-semibold">Whether you're a seasoned feline parent or simply adore all things cat-related, <br>this library brings together a collection of books, articles, and resources dedicated to the world of cats.</h4>
+                    <h4 class="mb-6 text-xl font-semibold">{{ $description }}</h4>
+                    <p class="mb-4 text-lg">Library Open Hours: {{ $library_open_time }} - {{ $library_close_time }}</p>
+                    <p class="mb-4 text-lg">Max Books to Loan: {{ $max_books_to_loan }}</p>
                 </div>
             </div>
         </div>

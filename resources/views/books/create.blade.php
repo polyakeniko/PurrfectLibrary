@@ -9,8 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('books.store') }}" method="POST">
+                    <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        @if ($errors->any())
+                            <div class="mb-4">
+                                <div class="text-red-600">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="mb-4">
                             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
@@ -45,6 +57,11 @@
                         <div class="mb-4">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                             <textarea name="description" id="description" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded"></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                            <input type="file" name="image" id="image" class="mt-1 block w-full p-2 border border-gray-300 rounded">
                         </div>
 
                         <button type="submit" class="button px-4 py-2 rounded">Add Book</button>

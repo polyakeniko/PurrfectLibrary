@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-32 h-32 object-cover rounded-md">
                     <h3 class="text-2xl font-semibold">Title: {{ $book->title }}</h3>
                     <p><strong>Author:</strong> {{ $book->author }}</p>
                     <p><strong>Category:</strong> {{ $book->category ? $book->category->name : 'No Category' }}</p>

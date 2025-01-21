@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('book_copies', function (Blueprint $table) {
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
             $table->enum('status', ['available', 'reserved', 'borrowed', 'lost'])->default('available');
             $table->timestamps();
         });

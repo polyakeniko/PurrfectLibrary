@@ -136,21 +136,27 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'nullable|string|max:255',
+            'tags' => 'nullable|string',
             'published_year' => 'nullable|integer',
             'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $book->update([
-            'title' => $request->title,
-            'author' => $request->author,
-            'category_id' => $request->category_id,
-            'tags' => $request->tags,
-            'published_year' => $request->published_year,
-            'description' => $request->description,
-        ]);
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->category_id = $request->input('category_id');
+        $book->tags = $request->input('tags');
+        $book->published_year = $request->input('published_year');
+        $book->description = $request->input('description');
 
-        return redirect()->route('books.show', $book)->with('success', 'Book updated successfully.');
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $book->image = $imagePath;
+        }
+
+        $book->save();
+
+        return redirect()->route('books.index')->with('success', 'Book updated successfully.');
     }
 
     public function destroy(Book $book)

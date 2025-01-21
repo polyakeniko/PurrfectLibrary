@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('tags')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->year('published_year')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

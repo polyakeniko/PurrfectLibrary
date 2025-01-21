@@ -44,7 +44,7 @@
                                 <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
                                     {{ __('Statistics') }}
                                 </x-nav-link>
-                                <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
+                                <x-nav-link :href="route('admin_settings.index')" :active="request()->routeIs('admin_settings.index')">
                                     {{ __('Library settings') }}
                                 </x-nav-link>
                             @endif
@@ -134,6 +134,19 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
                     {{ __('Reservations') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                    {{ __('Members') }}
+                </x-responsive-nav-link>
+                @elseif(Auth::user()->role == 'admin')
+                <x-responsive-nav-link :href="route('librarians.index')" :active="request()->routeIs('librarians.index')">
+                    {{ __('Librarians') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
+                    {{ __('Statistics') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin_settings.index')">
+                    {{ __('Library settings') }}
                 </x-responsive-nav-link>
                 @endif
             @endauth

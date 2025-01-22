@@ -18,9 +18,9 @@ class BookController extends Controller
     {
         $newestBooks = Book::orderBy('published_year', 'desc')->take(2)->get();
 
-        $mostPopularBooks = Book::select('books.id', 'books.title', 'books.author', 'books.published_year', 'books.category_id', DB::raw('AVG(reviews.rating) as average_rating'))
+        $mostPopularBooks = Book::select('books.id', 'books.title', 'books.author', 'books.published_year', 'books.image', 'books.category_id', DB::raw('AVG(reviews.rating) as average_rating'))
             ->leftJoin('reviews', 'reviews.book_id', '=', 'books.id')
-            ->groupBy('books.id', 'books.title', 'books.author', 'books.published_year', 'books.category_id')
+            ->groupBy('books.id', 'books.title', 'books.author', 'books.published_year', 'books.image', 'books.category_id')
             ->orderByDesc('average_rating')
             ->take(2)
             ->get();

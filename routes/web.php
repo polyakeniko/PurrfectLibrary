@@ -8,13 +8,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsLibrarian;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
@@ -77,4 +76,5 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(functio
     Route::get('admin/statistics', [StatisticsController::class, 'index'])->name('admin.statistics');
     Route::get('/admin/settings', [AdminSettingController::class, 'index'])->name('admin_settings.index');
     Route::put('/admin/settings/{adminSetting}', [AdminSettingController::class, 'update'])->name('admin_settings.update');
+    Route::get('admin/device-detections', [App\Http\Controllers\DeviceDetectionController::class, 'index'])->name('admin.device-detections.index');
 });

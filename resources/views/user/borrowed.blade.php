@@ -9,11 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <!-- Check if there are borrowed books -->
                     @if($loans->isEmpty())
                         <p>You have no borrowed books at the moment.</p>
                     @else
-                        <table class="min-w-full bg-white border border-gray-300">
+                        <table id="borrowed-books-table" class="min-w-full bg-white border border-gray-300">
                             <thead>
                             <tr>
                                 <th class="px-4 py-2 border">Book Title</th>
@@ -40,4 +39,14 @@
             </div>
         </div>
     </div>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#borrowed-books-table').DataTable();
+        });
+    </script>
 </x-app-layout>

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <a href="{{ route('librarians.create') }}" class="bg-green-500 px-4 py-2 rounded">Add Librarian</a>
-                    <table class="min-w-full bg-white border border-gray-300 mt-4">
+                    <table id="librarians-table" class="min-w-full bg-white border border-gray-300 mt-4">
                         <thead>
                         <tr>
                             <th class="px-4 py-2 border">Name</th>
@@ -47,4 +47,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Include DataTables CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Initialize DataTable -->
+    <script>
+        $(document).ready(function() {
+            $('#librarians-table').DataTable();
+        });
+    </script>
 </x-app-layout>

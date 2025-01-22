@@ -47,6 +47,9 @@
                                 <x-nav-link :href="route('admin_settings.index')" :active="request()->routeIs('admin_settings.index')">
                                     {{ __('Library settings') }}
                                 </x-nav-link>
+                                <x-nav-link :href="route('admin.device-detections.index')" :active="request()->routeIs('admin.device-detections.index')">
+                                    {{ __('Device Detection') }}
+                                </x-nav-link>
                             @endif
                         @endauth
                     @endif
@@ -145,9 +148,12 @@
                 <x-responsive-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin.statistics')">
                     {{ __('Statistics') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.statistics')" :active="request()->routeIs('admin_settings.index')">
+                <x-responsive-nav-link :href="route('admin_settings.index')" :active="request()->routeIs('admin_settings.index')">
                     {{ __('Library settings') }}
                 </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.device-detections.index')" :active="request()->routeIs('admin.device-detections.index')">
+                        {{ __('Library settings') }}
+                    </x-responsive-nav-link>
                 @endif
             @endauth
         </div>

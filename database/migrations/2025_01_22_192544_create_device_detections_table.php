@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_copies', function (Blueprint $table) {
+        Schema::create('device_detections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
-            $table->enum('status', ['available', 'reserved', 'borrowed', 'lost'])->default('available');
+            $table->string('device');
+            $table->string('platform');
+            $table->string('browser');
+            $table->string('ip');
+            $table->string('user_agent');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_copies');
+        Schema::dropIfExists('device_detections');
     }
 };

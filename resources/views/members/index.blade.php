@@ -9,7 +9,7 @@
                 <div class="p-6 text-gray-900">
                     <a href="{{ route('members.create') }}" class="button px-4 py-2 rounded text-white mb-4 inline-block">Add New Member</a>
 
-                    <table class="min-w-full bg-white text-left">
+                    <table id="members-table" class="min-w-full bg-white text-left">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -46,4 +46,14 @@
             </div>
         </div>
     </div>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#members-table').DataTable();
+        });
+    </script>
 </x-app-layout>

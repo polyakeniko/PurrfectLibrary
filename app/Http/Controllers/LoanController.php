@@ -8,10 +8,27 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //whereNull('returned_date')->
-        $loans = Loan::with('user', 'bookCopy')->get();
+        $query = Loan::with('user', 'bookCopy');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('bookCopy.book', function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%');
+            });
+        }
+
+        if ($request->has('returned')) {
+            $returned = $request->input('returned');
+            if ($returned === 'yes') {
+                $query->whereNotNull('returned_date');
+            } elseif ($returned === 'no') {
+                $query->whereNull('returned_date');
+            }
+        }
+
+        $loans = $query->orderBy('loan_date', 'desc')->get();
 
         return view('loans.index', compact('loans'));
     }

@@ -10,9 +10,25 @@ use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reservations = Reservation::with('user', 'bookCopy.book')->orderBy('reservation_date', 'desc')->get();
+        $query = Reservation::with('user', 'bookCopy.book');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('bookCopy.book', function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%');
+            });
+        }
+
+        if ($request->has('status')) {
+            $status = $request->input('status');
+            if (in_array($status, ['pending', 'ready', 'canceled', 'completed'])) {
+                $query->where('status', $status);
+            }
+        }
+
+        $reservations = $query->orderBy('reservation_date', 'desc')->get();
 
         return view('reservations.index', compact('reservations'));
     }

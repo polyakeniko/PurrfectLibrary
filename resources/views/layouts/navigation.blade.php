@@ -31,7 +31,7 @@
                             <x-nav-link :href="route('loans.index')" :active="request()->routeIs('loans.index')">
                                 {{ __('Loans') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reseravtions.index')">
+                            <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
                                 {{ __('Reservations') }}
                             </x-nav-link>
                             <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">

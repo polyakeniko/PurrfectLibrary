@@ -17,6 +17,18 @@
 
                     <h3 class="text-xl font-semibold mb-4">Loans List</h3>
 
+                    <form method="GET" action="{{ route('loans.index') }}" class="mb-4">
+                        <div class="flex items-center">
+                            <input type="text" name="search" placeholder="Search by book title" class="border rounded p-2 mr-2" value="{{ request('search') }}">
+                            <select name="returned" class="border rounded p-2 mr-2">
+                                <option value="">All</option>
+                                <option value="yes" {{ request('returned') === 'yes' ? 'selected' : '' }}>Returned</option>
+                                <option value="no" {{ request('returned') === 'no' ? 'selected' : '' }}>Not Returned</option>
+                            </select>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Search</button>
+                        </div>
+                    </form>
+
                     @if($loans->count() > 0)
                         <table class="min-w-full bg-white">
                             <thead>

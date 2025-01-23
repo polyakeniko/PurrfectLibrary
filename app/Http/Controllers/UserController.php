@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Loan;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,7 +17,11 @@ class UserController extends Controller
 
         return view('user.borrowed', compact('loans'));
     }
-
+    public function getAllUsers(): JsonResponse
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
     public function index()
     {
         $members = User::where('role', 'user')->orderBy('name')->get();

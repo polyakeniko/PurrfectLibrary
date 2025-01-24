@@ -23,4 +23,8 @@ class BookCopy extends Model
     {
         return $this->hasMany(Reservation::class, 'book_copy_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -24,7 +24,7 @@ class LoanFactory extends Factory
             'loan_date' => $this->faker->dateTimeThisYear,
             'return_due_date' => $this->faker->dateTimeBetween('now', '+1 month'),
             'returned_date' => $this->faker->optional()->dateTimeBetween('now', '+2 months'),
-            'late_fee' => $this->faker->randomFloat(2, 0, 10),
+            'late_fee' => 0.00,
         ];
     }
 }

@@ -37,12 +37,16 @@ class LoanController extends Controller
     {
         $loan->returned_date = Carbon::today();
 
-        if ($loan->return_due_date && Carbon::parse($loan->returned_date)->greaterThan($loan->return_due_date)) {
-            $lateDays = Carbon::parse($loan->returned_date)->diffInDays($loan->return_due_date);
-            $loan->late_fee = $lateDays * 1.00;
-        } else {
-            $loan->late_fee = 0;
-        }
+//        if ($loan->return_due_date && Carbon::parse($loan->returned_date)->greaterThan($loan->return_due_date)) {
+//            $lateDays = Carbon::parse($loan->returned_date)->diffInDays($loan->return_due_date);
+//            $loan->late_fee = $lateDays * 1.00;
+//        } else {
+//            $loan->late_fee = 0;
+//        }
+
+        $bookCopy = $loan->bookCopy;
+        $bookCopy->status = 'available';
+        $bookCopy->save();
 
         $loan->save();
 

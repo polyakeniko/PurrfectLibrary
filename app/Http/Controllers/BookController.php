@@ -135,6 +135,9 @@ class BookController extends Controller
             return redirect()->route('books.show', $book)->with('error', 'No available copies for this book.');
         }
 
+        $bookCopy->status = 'reserved';
+        $bookCopy->save();
+
         $reservation = new Reservation();
         $reservation->book_copy_id = $bookCopy->id;
         $reservation->user_id = auth()->id();
@@ -145,20 +148,21 @@ class BookController extends Controller
 
     public function undoReservation(Book $book)
     {
-        $reservation = Reservation::where('user_id', auth()->id())->first();
+        $reservation = Reservation::where('book_copy_id', $book->copies()->where('status', 'reserved')->first()->id)
+            ->where('user_id', auth()->id())
+            ->first();
 
-        if ($reservation && $reservation->bookCopy->book_id == $book->id) {
-
+        if ($reservation) {
             $bookCopy = $reservation->bookCopy;
             $bookCopy->status = 'available';
             $bookCopy->save();
 
             $reservation->delete();
 
-            return redirect()->route('books.show', $book)->with('success', 'You have successfully undone the reservation.');
+            return redirect()->route('books.show', $book)->with('success', 'Your reservation has been undone.');
         }
 
-        return redirect()->route('books.show', $book)->with('error', 'Reservation not found.');
+        return redirect()->route('books.show', $book)->with('error', 'No reservation found to undo.');
     }
 
     public function storeReview(Request $request, Book $book)

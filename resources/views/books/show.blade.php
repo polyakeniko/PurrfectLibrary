@@ -20,23 +20,37 @@
                     <p><strong>Available Copies:</strong> {{ $availableCopies }}</p>
                     @auth
                         @if(Auth::user()->role == 'user')
-                            @if($availableCopies > 0)
-                                @if(!$userHasReserved && !$userHasLoaned)
-                                    <form action="{{ route('books.reserve', $book) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="bg-green-200 px-4 py-2 rounded">Reserve this book</button>
-                                    </form>
-                                @elseif($userHasReserved)
-                                    <form action="{{ route('books.undoReservation', $book) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-red-500 px-4 py-2 rounded">Undo Reservation</button>
-                                    </form>
-                                @endif
-                            @else
+                            @php
+                                $userHasReserved = $book->copies()
+                                    ->whereHas('reservations', function ($query) {
+                                        $query->where('user_id', auth()->id());
+                                    })
+                                    ->exists();
+
+                                $userHasLoaned = $book->copies()
+                                    ->whereHas('loans', function ($query) {
+                                        $query->where('user_id', auth()->id());
+                                    })
+                                    ->exists();
+                            @endphp
+
+                            @if(!$userHasReserved && $availableCopies > 0)
+                                <form action="{{ route('books.reserve', $book) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="bg-green-200 px-4 py-2 rounded">Reserve this book</button>
+                                </form>
+                            @elseif($userHasReserved)
+                                <form action="{{ route('books.undoReservation', $book) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 px-4 py-2 rounded">Undo Reservation</button>
+                                </form>
+                            @elseif($userHasLoaned)
+                                <p class="text-red-700">You have already loaned this book.</p>
+                            @endif
+                            @elseif($availableCopies < 0)
                                 <p class="text-red-700">No available copies to loan or reserve.</p>
                             @endif
-                        @endif
                     @endauth
 
                     @auth

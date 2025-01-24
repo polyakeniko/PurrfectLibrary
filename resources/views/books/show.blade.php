@@ -99,55 +99,70 @@
                                 $userReview = $book->reviews()->where('user_id', auth()->id())->first();
                             @endphp
 
-                            @if($userReview)
-                                <div class="mt-6">
-                                    <h4 class="text-xl font-semibold">Update Your Review:</h4>
-                                    <form action="{{ route('books.review', $book) }}" method="POST">
-                                        @csrf
-                                        <div class="mb-4">
-                                            <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                            <select id="rating" name="rating" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>
-                                                <option value="1" {{ $userReview->rating == 1 ? 'selected' : '' }}>1 - Poor</option>
-                                                <option value="2" {{ $userReview->rating == 2 ? 'selected' : '' }}>2 - Fair</option>
-                                                <option value="3" {{ $userReview->rating == 3 ? 'selected' : '' }}>3 - Good</option>
-                                                <option value="4" {{ $userReview->rating == 4 ? 'selected' : '' }}>4 - Very Good</option>
-                                                <option value="5" {{ $userReview->rating == 5 ? 'selected' : '' }}>5 - Excellent</option>
-                                            </select>
+                            <div class="mt-6">
+                                <h4 class="text-xl font-semibold">{{ $userReview ? 'Update Your Review' : 'Write a Review' }}:</h4>
+                                <form action="{{ route('books.review', $book) }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
+                                        <div id="star-rating" class="flex">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <i class="fa fa-star text-gray-300 cursor-pointer" data-value="{{ $i }}"></i>
+                                            @endfor
                                         </div>
-                                        <div class="mb-4">
-                                            <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
-                                            <textarea id="review" name="review" rows="4" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>{{ $userReview->review }}</textarea>
-                                        </div>
-                                        <button type="submit" class="button px-4 py-2 rounded">Update Review</button>
-                                    </form>
-                                </div>
-                            @else
-                                <div class="mt-6">
-                                    <h4 class="text-xl font-semibold">Write a Review:</h4>
-                                    <form action="{{ route('books.review', $book) }}" method="POST">
-                                        @csrf
-                                        <div class="mb-4">
-                                            <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                            <select id="rating" name="rating" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>
-                                                <option value="1">1 - Poor</option>
-                                                <option value="2">2 - Fair</option>
-                                                <option value="3">3 - Good</option>
-                                                <option value="4">4 - Very Good</option>
-                                                <option value="5">5 - Excellent</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
-                                            <textarea id="review" name="review" rows="4" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required></textarea>
-                                        </div>
-                                        <button type="submit" class="button px-4 py-2 rounded">Submit Review</button>
-                                    </form>
-                                </div>
-                            @endif
+                                        <input type="hidden" id="rating" name="rating" value="{{ $userReview ? $userReview->rating : '' }}" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
+                                        <textarea id="review" name="review" rows="4" class="mt-1 block w-1/2 p-2 border border-gray-300 rounded" required>{{ $userReview ? $userReview->review : '' }}</textarea>
+                                    </div>
+                                    <button type="submit" class="button px-4 py-2 rounded">{{ $userReview ? 'Update Review' : 'Submit Review' }}</button>
+                                </form>
+                            </div>
                         @endif
                     @endauth
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        #star-rating .fa-star {
+            font-size: 2rem; /* Adjust the size as needed */
+            margin-right: 0.25rem; /* Add space between stars */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('#star-rating .fa-star');
+            const ratingInput = document.getElementById('rating');
+
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    const rating = this.getAttribute('data-value');
+                    ratingInput.value = rating;
+
+                    stars.forEach(s => {
+                        s.classList.remove('text-yellow-500');
+                        s.classList.add('text-gray-300');
+                    });
+
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.remove('text-gray-300');
+                        stars[i].classList.add('text-yellow-500');
+                    }
+                });
+            });
+
+            // Set initial rating if exists
+            const initialRating = ratingInput.value;
+            if (initialRating) {
+                for (let i = 0; i < initialRating; i++) {
+                    stars[i].classList.remove('text-gray-300');
+                    stars[i].classList.add('text-yellow-500');
+                }
+            }
+        });
+    </script>
 </x-app-layout>

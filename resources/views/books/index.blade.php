@@ -17,7 +17,9 @@
                                 <ul>
                                     @foreach($mostPopularBooks as $book)
                                         <li class="mt-4 p-2 rounded-md" style="background-color: #6b4c33">
-                                            <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                            <a href="{{ route('books.show', $book->id) }}">
+                                                <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                            </a>
                                             <a href="{{ route('books.show', $book->id) }}" class="text-orange-200 hover:underline">
                                                 <strong>Title:</strong> {{ $book->title }}
                                             </a>
@@ -40,7 +42,9 @@
                                 <ul>
                                     @foreach($newestBooks as $book)
                                         <li class="mt-4 p-2 rounded-md" style="background-color: #6b4c33">
-                                            <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                            <a href="{{ route('books.show', $book->id) }}">
+                                                <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                            </a>
                                             <a href="{{ route('books.show', $book->id) }}" class="text-orange-200 hover:underline">
                                                 <strong>Title:</strong> {{ $book->title }}
                                             </a>
@@ -71,7 +75,9 @@
                                 @foreach($books as $book)
                                     <li class="w-1/4 p-4 border rounded shadow text-white text-center"
                                         style="background-color: {{ $loop->index % 2 == 0 ? '#916949' : '#6b4c33' }};">
-                                        <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                        <a href="{{ route('books.show', $book->id) }}">
+                                            <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('images/default.jpg') }}" alt="{{ $book->title }}" class="mt-4 w-full h-48 object-cover rounded-md">
+                                        </a>
                                         <a href="{{ route('books.show', $book->id) }}" class="text-orange-200 hover:underline">
                                             <strong>Title:</strong> {{ $book->title }}
                                         </a>

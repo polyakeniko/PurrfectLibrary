@@ -225,4 +225,24 @@ class Api_BooksController extends Controller
 
         return response()->json($borrowedBookCopies, 200);
     }
+    public function getAllBooks(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Invalid token'], 401);
+        }
+
+        $books = Book::select( 'id','title', 'author', 'description', 'published_year', 'image')->get();
+        return response()->json($books, 200);
+    }
+    public function getMostLikedBooks()
+    {
+        $mostLikedBooks = Book::withCount('likedByUsers')
+            ->orderBy('liked_by_users_count', 'desc')
+            ->take(3)
+            ->get(['id', 'title', 'author', 'description', 'published_year', 'image']);
+
+        return response()->json($mostLikedBooks, 200);
+    }
 }

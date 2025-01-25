@@ -65,10 +65,8 @@ class LibrarianController extends Controller
     {
         try {
             $librarian->update(['status' => 'banned']);
-            Log::info('Librarian status after update: ' . $librarian->status);
             return redirect()->route('librarians.index')->with('success', 'Librarian banned successfully.');
         } catch (\Exception $e) {
-            Log::error('Error banning librarian: ' . $e->getMessage());
             return redirect()->route('librarians.index')->with('error', 'Failed to ban librarian.');
         }
     }

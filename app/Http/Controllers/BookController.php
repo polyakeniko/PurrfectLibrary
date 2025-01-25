@@ -117,10 +117,12 @@ class BookController extends Controller
 
             $userHasLoaned = Loan::where('book_copy_id', $firstAvailableCopy->id)
                 ->where('user_id', auth()->id())
+                ->whereNull('returned_date')
                 ->exists();
 
             $userHasReserved = Reservation::where('book_copy_id', $firstAvailableCopy->id)
                 ->where('user_id', auth()->id())
+                ->whereNotIn('status', ['completed', 'cancelled'])
                 ->exists();
         }
 

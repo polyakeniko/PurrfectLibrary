@@ -23,13 +23,15 @@
                             @php
                                 $userHasReserved = $book->copies()
                                     ->whereHas('reservations', function ($query) {
-                                        $query->where('user_id', auth()->id());
+                                        $query->where('user_id', auth()->id())
+                                        ->whereNotIn('status', ['completed', 'cancelled']);
                                     })
                                     ->exists();
 
                                 $userHasLoaned = $book->copies()
                                     ->whereHas('loans', function ($query) {
-                                        $query->where('user_id', auth()->id());
+                                        $query->where('user_id', auth()->id())
+                                        ->whereNull('returned_date');
                                     })
                                     ->exists();
                             @endphp
@@ -39,7 +41,7 @@
                                     @csrf
                                     <button type="submit" class="bg-green-200 px-4 py-2 rounded">Reserve this book</button>
                                 </form>
-                            @elseif($userHasReserved)
+                            @elseif($userHasReserved && !$userHasLoaned)
                                 <form action="{{ route('books.undoReservation', $book) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

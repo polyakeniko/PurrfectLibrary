@@ -15,6 +15,12 @@
                         </div>
                     @endif
 
+                    @if(session('error'))
+                        <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <h3 class="text-xl font-semibold mb-4">Reservations List</h3>
 
                     <form method="GET" action="{{ route('reservations.index') }}" class="mb-4">

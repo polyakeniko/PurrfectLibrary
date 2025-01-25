@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ReservationStatusChanged;
+use App\Models\AdminSetting;
 use App\Models\Loan;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -45,16 +46,25 @@ class ReservationController extends Controller
                 ->delete();
         }
 
-        $reservation->status = $request->status;
-        $reservation->save();
-
         if ($request->status === 'completed') {
+            $maxBooksToLoan = AdminSetting::value('max_books_to_loan');
+            $currentLoans = Loan::where('user_id', $reservation->user_id)
+                ->whereNull('returned_date')
+                ->count();
+
+            if ($currentLoans >= $maxBooksToLoan) {
+                return redirect()->back()->with('error', 'User has reached the maximum number of books they can loan.');
+            }
+
             Loan::create([
                 'user_id' => $reservation->user_id,
                 'book_copy_id' => $reservation->book_copy_id,
                 'return_due_date' => now()->addWeeks(2), // Set the due date to 2 weeks from now
             ]);
         }
+
+        $reservation->status = $request->status;
+        $reservation->save();
 
         if (in_array($request->status, ['ready', 'canceled'])) {
             Mail::to($reservation->user->email)->send(new ReservationStatusChanged($reservation, $request->status));

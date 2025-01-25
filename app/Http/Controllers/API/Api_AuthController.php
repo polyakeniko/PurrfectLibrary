@@ -3,6 +3,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -65,7 +66,15 @@ class Api_AuthController extends Controller
             return response()->json(['message' => 'Email address is not verified', 'status' => '403 => Forbidden'], 403);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Check for existing non-expired tokens
+        $existingToken = $user->tokens()->where('expires_at', '>', Carbon::now())->first();
+
+        if ($existingToken) {
+            $token = $existingToken->plainTextToken;
+        } else {
+            // Create a new token with 2 hours expiration
+            $token = $user->createToken('auth_token', ['*'], Carbon::now()->addHours(2))->plainTextToken;
+        }
 
         return response()->json([
             'message' => 'Login successful',
@@ -77,7 +86,6 @@ class Api_AuthController extends Controller
             'status' => '200 => OK'
         ], 200);
     }
-
     /**
      * Logout a user.
      */

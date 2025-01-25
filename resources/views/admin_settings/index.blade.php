@@ -45,7 +45,7 @@
                             <input type="number" name="max_books_to_loan" id="max_books_to_loan" value="{{ old('max_books_to_loan', $settings->max_books_to_loan) }}" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                         </div>
 
-                        <button type="submit" class="bg-blue-500 px-4 py-2 rounded text-white">Update Settings</button>
+                        <button type="submit" class="button px-4 py-2 rounded text-white">Update Settings</button>
                     </form>
                 </div>
             </div>

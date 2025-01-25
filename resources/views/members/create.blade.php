@@ -25,7 +25,7 @@
                             <input type="password" id="password" name="password" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                         </div>
 
-                        <button type="submit" class="bg-blue-500 px-4 py-2 rounded text-white">Save Member</button>
+                        <button type="submit" class="button px-4 py-2 rounded text-white">Save Member</button>
                     </form>
                 </div>
             </div>

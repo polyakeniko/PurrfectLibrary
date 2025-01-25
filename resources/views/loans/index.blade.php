@@ -25,7 +25,7 @@
                                 <option value="yes" {{ request('returned') === 'yes' ? 'selected' : '' }}>Returned</option>
                                 <option value="no" {{ request('returned') === 'no' ? 'selected' : '' }}>Not Returned</option>
                             </select>
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Search</button>
+                            <button type="submit" class="button text-white px-4 py-2 rounded">Search</button>
                         </div>
                     </form>
 
@@ -80,7 +80,26 @@
 
     <script>
         $(document).ready(function() {
-            $('#loans-table').DataTable();
+            $('#loans-table').DataTable({
+
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                lengthMenu: [5, 10, 25, 50],
+                language: {
+                    search: "Filter records:",
+                    lengthMenu: "Show _MENU_ entries",
+                    info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                    paginate: {
+                        first: "First",
+                        last: "Last",
+                        next: "Next",
+                        previous: "Previous"
+                    }
+                }
+            });
         });
     </script>
+
 </x-app-layout>

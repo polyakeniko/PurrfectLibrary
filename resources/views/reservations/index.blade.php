@@ -25,7 +25,7 @@
 
                     <form method="GET" action="{{ route('reservations.index') }}" class="mb-4">
                         <div class="flex items-center">
-                            <input type="text" name="search" placeholder="Search by book title" class="border rounded p-2 mr-2" value="{{ request('search') }}">
+                            <input type="text" name="search" placeholder="Search by book title" class=" border rounded p-2 mr-2" value="{{ request('search') }}">
                             <select name="status" class="border rounded p-2 mr-2">
                                 <option value="">All</option>
                                 <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pending</option>
@@ -33,7 +33,7 @@
                                 <option value="canceled" {{ request('status') === 'canceled' ? 'selected' : '' }}>Canceled</option>
                                 <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>Completed</option>
                             </select>
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Search</button>
+                            <button type="submit" class="button text-white px-4 py-2 rounded">Search</button>
                         </div>
                     </form>
 

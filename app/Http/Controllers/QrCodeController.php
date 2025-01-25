@@ -35,8 +35,7 @@ class QrCodeController extends Controller
 
         // Save QR code image
         $qrCodePath = storage_path('app/public/qr_codes/' . $book->id .  '_' . now()->format('Ymd_His') . '.png');
-
-        $qrCodePath = storage_path('app/public/qr_codes/' . $book->id . '.png');
+        
         file_put_contents($qrCodePath, $qrCodeData);
 
         // Save QR code information in the database

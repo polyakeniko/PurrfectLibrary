@@ -3,6 +3,10 @@ use App\Http\Controllers\API\Api_AuthController;
 use App\Http\Controllers\API\Api_ProfileController;
 use App\Http\Controllers\API\Api_BooksController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\VerifyEmailController;
+
+
+
 
 Route::post('register', [Api_AuthController::class, 'register']);
 Route::post('login', [Api_AuthController::class, 'login']);
@@ -11,7 +15,7 @@ Route::get('books/popular', [Api_BooksController::class, 'getPopularBooks']);
 Route::get('books/new', [Api_BooksController::class, 'getNewBooks']);
 Route::get('books/{book}/reviews', [Api_BooksController::class, 'getBookReviews']);
 Route::get('books/{book}/available-copies', [Api_BooksController::class, 'getAvailableCopies']);
-
+Route::get('verify-email', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', [Api_ProfileController::class, 'show']);

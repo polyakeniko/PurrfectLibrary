@@ -3,6 +3,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class Api_AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['errors' => $validator->errors(), 'status' => '422 => Unprocessable Entity'], 422);
         }
 
         $user = User::create([
@@ -30,9 +31,10 @@ class Api_AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        event(new Registered($user));
 
-        return response()->json(['message' => 'Registration successful', 'token' => $token], 201);
+
+        return response()->json(['message' => 'Registration successful, please check your email for verification link', 'status' => '201 => Created'], 201);
     }
 
     /**
@@ -46,13 +48,21 @@ class Api_AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['errors' => $validator->errors(), 'status' => '422 => Unprocessable Entity'], 422);
         }
 
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json(['message' => 'Invalid credentials', 'status' => '401 => Unauthorized'], 401);
+        }
+
+        if ($user->status == 'banned') {
+            return response()->json(['message' => 'Account is banned', 'status' => '403 => Forbidden'], 403);
+        }
+
+        if (is_null($user->email_verified_at)) {
+            return response()->json(['message' => 'Email address is not verified', 'status' => '403 => Forbidden'], 403);
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -63,7 +73,8 @@ class Api_AuthController extends Controller
             'user' => [
                 'name' => $user->name,
                 'email' => $user->email,
-            ]
+            ],
+            'status' => '200 => OK'
         ], 200);
     }
 
@@ -74,6 +85,6 @@ class Api_AuthController extends Controller
     {
         $request->user()->tokens()->delete();
 
-        return response()->json(['message' => 'Logout successful'], 200);
+        return response()->json(['message' => 'Logout successful', 'status' => '200 => OK'], 200);
     }
 }

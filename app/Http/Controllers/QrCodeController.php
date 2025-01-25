@@ -18,7 +18,14 @@ class QrCodeController extends Controller
         $book = Book::findOrFail($bookId);
 
         // Concatenate book details
-        $bookDetails = "Title: {$book->title}\nAuthor: {$book->author}\nDescription: {$book->description}\nPublished Year: {$book->published_year}";
+        $bookDetails = json_encode([
+            'id' => $book->id,
+            'title' => $book->title,
+            'author' => $book->author,
+            'description' => $book->description,
+            'image' => $book->image,
+            'published_year' => $book->published_year,
+        ]);
 
         // Generate QR code
         $qrCode = new QrCode($bookDetails);
@@ -26,13 +33,13 @@ class QrCodeController extends Controller
         $qrCodeData = $writer->write($qrCode)->getString();
 
         // Save QR code image
-        $qrCodePath = storage_path('app/public/qr_codes/' . $book->id . '.png');
+        $qrCodePath = storage_path('app/public/qr_codes/' . $book->id .  '_' . now()->format('Ymd_His') . '.png');
         file_put_contents($qrCodePath, $qrCodeData);
 
         // Save QR code information in the database
         BookQrCode::updateOrCreate(
             ['book_id' => $book->id],
-            ['qr_code_image' => 'qr_codes/' . $book->id . '.png']
+            ['qr_code_image' => 'qr_codes/' . $book->id .  '_' . now()->format('Ymd_His') . '.png']
         );
 
         return redirect()->route('qr-codes.index')->with('success', 'QR code generated successfully');

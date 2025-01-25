@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Qr Codes') }}
+
         </h2>
     </x-slot>
 
@@ -19,6 +20,16 @@
                             <th class="border border-gray-300 px-4 py-2 text-center">Published Year</th>
                             <th class="border border-gray-300 px-5 py-6 text-center">QR Code</th>
                             <th class="border border-gray-300 px-4 py-2 text-center">Action</th>
+                    <table class="min-w-full border-collapse border border-gray-200">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 px-4 py-2">ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Title</th>
+                            <th class="border border-gray-300 px-4 py-2">Author</th>
+                            <th class="border border-gray-300 px-4 py-2">Description</th>
+                            <th class="border border-gray-300 px-4 py-2">Published Year</th>
+                            <th class="border border-gray-300 px-5 py-6">QR Code</th>
+                            <th class="border border-gray-300 px-4 py-2">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,6 +43,14 @@
                                 <td class="border border-gray-300 text-center">
                                     @if($book->qrCode)
                                         <img src="{{ asset('storage/' . $book->qrCode->qr_code_image) }}" alt="QR Code" class="w-80 h-40">
+                                <td class="border border-gray-300 px-4 py-2">{{ $book->id }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ $book->title }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ $book->author }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ $book->description }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ $book->published_year }}</td>
+                                <td class="border border-gray-300">
+                                    @if($book->qrCode)
+                                        <img src="{{ asset('storage/' . $book->qrCode->qr_code_image) }}" alt="QR Code" class="w-40 h-35 mx-auto">
                                     @else
                                         No QR Code
                                     @endif
@@ -40,6 +59,10 @@
                                     <form action="{{ route('qr-codes.store', $book->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="button text-white px-4 py-2 rounded">
+                                <td class="border border-gray-300 px-4 py-2">
+                                    <form action="{{ route('qr-codes.store', $book->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
                                             Generate / Save
                                         </button>
                                     </form>

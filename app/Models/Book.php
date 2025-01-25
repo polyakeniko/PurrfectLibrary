@@ -48,5 +48,9 @@ class Book extends Model
     {
         return $this->belongsToMany(User::class, 'liked_books')->withTimestamps();
     }
+    public function qrCode()
+    {
+        return $this->hasOne(BookQrCode::class);
+    }
 
 }

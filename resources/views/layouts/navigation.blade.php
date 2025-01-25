@@ -37,6 +37,9 @@
                             <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
                                 {{ __('Members') }}
                             </x-nav-link>
+                                <x-nav-link :href="route('qr-codes.index')" :active="request()->routeIs('qr-codes.index')">
+                                    {{ __('QR Codes') }}
+                                </x-nav-link>
                             @elseif(Auth::user()->role == 'admin')
                                 <x-nav-link :href="route('librarians.index')" :active="request()->routeIs('librarians.index')">
                                     {{ __('Librarians') }}

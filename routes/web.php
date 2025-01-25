@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\UserController;
@@ -33,6 +34,7 @@ Route::put('/books/{book}', [BookController::class, 'update'])->name('books.upda
 Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
 Route::get('create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::get('/qr-codes', [QrCodeController::class, 'index'])->name('qr-codes.index');
 
 Route::get('/members', [UserController::class, 'index'])->name('members.index');
 
@@ -78,3 +80,7 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(functio
     Route::put('/admin/settings/{adminSetting}', [AdminSettingController::class, 'update'])->name('admin_settings.update');
     Route::get('admin/device-detections', [App\Http\Controllers\DeviceDetectionController::class, 'index'])->name('admin.device-detections.index');
 });
+
+//qr codes
+Route::get('/qr-codes', [QrCodeController::class, 'index'])->name('qr-codes.index');
+Route::post('/qr-codes/{book}', [QrCodeController::class, 'generateQrCode'])->name('qr-codes.store');

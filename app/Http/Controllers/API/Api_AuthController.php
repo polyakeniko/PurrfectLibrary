@@ -65,7 +65,8 @@ class Api_AuthController extends Controller
             return response()->json(['message' => 'Email address is not verified', 'status' => '403 => Forbidden'], 403);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token', [], now()->addHours(2))->plainTextToken;
+
 
         return response()->json([
             'message' => 'Login successful',

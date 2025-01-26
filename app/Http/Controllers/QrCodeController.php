@@ -28,8 +28,7 @@ class QrCodeController extends Controller
             'published_year' => $book->published_year,
         ]);
 
-
-        $bookDetails = "Title: {$book->title}\nAuthor: {$book->author}\nDescription: {$book->description}\nPublished Year: {$book->published_year}";
+        
 
         // Generate QR code
         $qrCode = new QrCode($bookDetails);

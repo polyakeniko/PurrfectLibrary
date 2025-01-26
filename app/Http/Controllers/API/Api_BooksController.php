@@ -34,7 +34,7 @@ class Api_BooksController extends Controller
 
         $sortedBooks = $books->sortByDesc('average_rating')->take(3); // Sort by average_rating and take top 3
 
-        return response()->json($sortedBooks->values()->all(), 200);
+        return response()->json($sortedBooks->values()->all(),  200);
     }
 
     public function getNewBooks()

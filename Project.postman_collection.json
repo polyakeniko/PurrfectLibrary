@@ -1,0 +1,2406 @@
+{
+	"info": {
+		"_postman_id": "9fa32878-c2e3-4c40-8015-0bbf5ce1e033",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39876029"
+	},
+	"item": [
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Reservation_Add",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/reservations/10",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reservation_Add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/reservations/10",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reservations",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:01:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Reservation added successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reservation_Delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/reservations/book-copy/10",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"book-copy",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reservation_Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/reservations/book-copy/10",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reservations",
+										"book-copy",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:02:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Reservation deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "BookCopy_Reserved",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/book-copies/5/reserve",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"book-copies",
+								"5",
+								"reserve"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/book-copies/5/reserve",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"book-copies",
+										"5",
+										"reserve"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:04:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book copy reserved successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "BookCopy_Available",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/book-copies/5/available",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"book-copies",
+								"5",
+								"available"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/book-copies/5/available",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"book-copies",
+										"5",
+										"available"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:04:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book copy made available successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Books_Borrowed",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/book-copies/borrowed",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"book-copies",
+								"borrowed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_Borrowed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/book-copies/borrowed",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"book-copies",
+										"borrowed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:52:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 14,\n        \"book_id\": 10,\n        \"status\": \"borrowed\",\n        \"created_at\": \"2025-01-22T11:11:06.000000Z\",\n        \"updated_at\": \"2025-01-24T12:55:28.000000Z\",\n        \"book\": {\n            \"id\": 10,\n            \"title\": \"Recusandae aut ullam\",\n            \"author\": \"Valentine Towne\",\n            \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n            \"published_year\": \"2020\",\n            \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\"\n        }\n    },\n    {\n        \"id\": 10,\n        \"book_id\": 4,\n        \"status\": \"borrowed\",\n        \"created_at\": \"2025-01-22T11:11:06.000000Z\",\n        \"updated_at\": \"2025-01-22T11:11:06.000000Z\",\n        \"book\": {\n            \"id\": 4,\n            \"title\": \"Reprehenderit consequuntur nostrum\",\n            \"author\": \"Kira Funk\",\n            \"description\": \"Consectetur iste necessitatibus culpa. Ullam atque quas rem totam est impedit ut. Numquam asperiores qui quia voluptatum magni. Aspernatur dicta perspiciatis dolorum optio.\",\n            \"published_year\": \"1992\",\n            \"image\": null\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Books_Liked",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/liked",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"liked"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_Liked",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/liked",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"liked"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:51:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 10,\n        \"title\": \"Recusandae aut ullam\",\n        \"author\": \"Valentine Towne\",\n        \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n        \"published_year\": \"2020\",\n        \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\",\n        \"pivot\": {\n            \"user_id\": 2,\n            \"book_id\": 10,\n            \"created_at\": \"2025-01-24T11:48:46.000000Z\",\n            \"updated_at\": \"2025-01-24T11:48:46.000000Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Repellat modi asperiores\",\n        \"author\": \"Neil Heidenreich\",\n        \"description\": \"Blanditiis quisquam perspiciatis libero accusantium et numquam ipsam praesentium. Atque adipisci autem omnis nobis occaecati vel et. Error magni pariatur labore repudiandae voluptatum. Fugit est qui cumque pariatur.\",\n        \"published_year\": \"1982\",\n        \"image\": null,\n        \"pivot\": {\n            \"user_id\": 2,\n            \"book_id\": 2,\n            \"created_at\": \"2025-01-24T12:30:00.000000Z\",\n            \"updated_at\": \"2025-01-24T12:30:00.000000Z\"\n        }\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Voluptatem reiciendis vitae qui\",\n        \"author\": \"Darwin Crona\",\n        \"description\": \"Debitis molestiae aut consequatur quo. Et et laboriosam aut odit odio et. Qui rem consequatur sunt nulla vel dolor inventore. Quia voluptatem animi qui sed earum.\",\n        \"published_year\": \"1998\",\n        \"image\": null,\n        \"pivot\": {\n            \"user_id\": 2,\n            \"book_id\": 6,\n            \"created_at\": \"2025-01-24T17:23:26.000000Z\",\n            \"updated_at\": \"2025-01-24T17:23:26.000000Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Books_New",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/new",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_New",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/new",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"new"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:48:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Quia deserunt esse\",\n        \"author\": \"Natalie Aufderhar IV\",\n        \"description\": \"Consequuntur earum modi nesciunt et rerum quis. Quis explicabo delectus hic porro vitae voluptas beatae. Reprehenderit ut saepe qui ipsam rerum aliquid quae. Consequuntur accusantium harum at rerum enim mollitia.\",\n        \"tags\": \"aut, fugit, accusamus\",\n        \"category_id\": 5,\n        \"published_year\": \"2022\",\n        \"image\": null\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Recusandae aut ullam\",\n        \"author\": \"Valentine Towne\",\n        \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n        \"tags\": \"voluptate, eos, et\",\n        \"category_id\": 4,\n        \"published_year\": \"2020\",\n        \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Voluptatem reiciendis vitae qui\",\n        \"author\": \"Darwin Crona\",\n        \"description\": \"Debitis molestiae aut consequatur quo. Et et laboriosam aut odit odio et. Qui rem consequatur sunt nulla vel dolor inventore. Quia voluptatem animi qui sed earum.\",\n        \"tags\": \"autem, est, adipisci\",\n        \"category_id\": 3,\n        \"published_year\": \"1998\",\n        \"image\": null\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Reprehenderit consequuntur nostrum\",\n        \"author\": \"Kira Funk\",\n        \"description\": \"Consectetur iste necessitatibus culpa. Ullam atque quas rem totam est impedit ut. Numquam asperiores qui quia voluptatum magni. Aspernatur dicta perspiciatis dolorum optio.\",\n        \"tags\": \"fugit, odit, deleniti\",\n        \"category_id\": 1,\n        \"published_year\": \"1992\",\n        \"image\": null\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Voluptatem repellendus ea\",\n        \"author\": \"Dejuan Marks IV\",\n        \"description\": \"Eum ut aliquam adipisci accusamus magni. Tenetur laborum consequatur officiis praesentium aperiam odit et. Sed ipsam voluptatum est aperiam ratione neque.\",\n        \"tags\": \"earum, voluptatem, fugiat\",\n        \"category_id\": 2,\n        \"published_year\": \"1989\",\n        \"image\": null\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Maiores alias fugit\",\n        \"author\": \"Gerda Zemlak\",\n        \"description\": \"Quas aliquam numquam sequi debitis mollitia aut earum. Earum neque quibusdam id assumenda alias est nihil. Rerum cupiditate est sequi et. Nisi sit et officiis aut voluptas est.\",\n        \"tags\": \"similique, nostrum, assumenda\",\n        \"category_id\": 4,\n        \"published_year\": \"1986\",\n        \"image\": \"images/W03NoM4AwBsdIkxW1pwdl68FRJ4wiU0QPJlgd4rv.jpg\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Repellat modi asperiores\",\n        \"author\": \"Neil Heidenreich\",\n        \"description\": \"Blanditiis quisquam perspiciatis libero accusantium et numquam ipsam praesentium. Atque adipisci autem omnis nobis occaecati vel et. Error magni pariatur labore repudiandae voluptatum. Fugit est qui cumque pariatur.\",\n        \"tags\": \"qui, laborum, voluptas\",\n        \"category_id\": 3,\n        \"published_year\": \"1982\",\n        \"image\": null\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Laborum quod exercitationem quas\",\n        \"author\": \"Dr. Adan Borer I\",\n        \"description\": \"Qui quo hic aut esse id. Laboriosam enim nisi tempora itaque omnis. Eligendi qui ut iure pariatur quis nam.\",\n        \"tags\": \"sed, quod, vel\",\n        \"category_id\": 1,\n        \"published_year\": \"1974\",\n        \"image\": null\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Occaecati et officia\",\n        \"author\": \"Raphael Wolf\",\n        \"description\": \"Est tempora minus nihil nostrum quos consequatur et sed. Sed aut molestiae ut doloribus omnis aut reiciendis qui. Explicabo et culpa minima natus eos. Sed sit rerum et aut.\",\n        \"tags\": \"molestiae, pariatur, unde\",\n        \"category_id\": 5,\n        \"published_year\": \"1973\",\n        \"image\": null\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Est aut nulla in\",\n        \"author\": \"Pattie Altenwerth IV\",\n        \"description\": \"Et laborum explicabo est ut rerum et. Ab sed est aut et maxime eius ut. Mollitia cumque blanditiis laudantium sint. Quo rem sit perferendis eos non quibusdam. Non sed quibusdam quia.\",\n        \"tags\": \"mollitia, veritatis, neque\",\n        \"category_id\": 3,\n        \"published_year\": \"1971\",\n        \"image\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Books_Popular",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/popular",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"popular"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_Popular",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/popular",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"popular"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:50:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Quia deserunt esse\",\n        \"author\": \"Natalie Aufderhar IV\",\n        \"description\": \"Consequuntur earum modi nesciunt et rerum quis. Quis explicabo delectus hic porro vitae voluptas beatae. Reprehenderit ut saepe qui ipsam rerum aliquid quae. Consequuntur accusantium harum at rerum enim mollitia.\",\n        \"tags\": \"aut, fugit, accusamus\",\n        \"category_id\": 5,\n        \"published_year\": \"2022\",\n        \"image\": null,\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"reviews_count\": 3,\n        \"average_rating\": 4.33,\n        \"reviews\": [\n            {\n                \"book_id\": 3,\n                \"average_rating\": \"4.3333\"\n            }\n        ]\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Recusandae aut ullam\",\n        \"author\": \"Valentine Towne\",\n        \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n        \"tags\": \"voluptate, eos, et\",\n        \"category_id\": 4,\n        \"published_year\": \"2020\",\n        \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\",\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T15:36:57.000000Z\",\n        \"reviews_count\": 2,\n        \"average_rating\": 3.5,\n        \"reviews\": [\n            {\n                \"book_id\": 10,\n                \"average_rating\": \"3.5000\"\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Repellat modi asperiores\",\n        \"author\": \"Neil Heidenreich\",\n        \"description\": \"Blanditiis quisquam perspiciatis libero accusantium et numquam ipsam praesentium. Atque adipisci autem omnis nobis occaecati vel et. Error magni pariatur labore repudiandae voluptatum. Fugit est qui cumque pariatur.\",\n        \"tags\": \"qui, laborum, voluptas\",\n        \"category_id\": 3,\n        \"published_year\": \"1982\",\n        \"image\": null,\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"reviews_count\": 2,\n        \"average_rating\": 3,\n        \"reviews\": [\n            {\n                \"book_id\": 2,\n                \"average_rating\": \"3.0000\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Books_All",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:49:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Est aut nulla in\",\n        \"author\": \"Pattie Altenwerth IV\",\n        \"description\": \"Et laborum explicabo est ut rerum et. Ab sed est aut et maxime eius ut. Mollitia cumque blanditiis laudantium sint. Quo rem sit perferendis eos non quibusdam. Non sed quibusdam quia.\",\n        \"published_year\": \"1971\",\n        \"image\": null\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Repellat modi asperiores\",\n        \"author\": \"Neil Heidenreich\",\n        \"description\": \"Blanditiis quisquam perspiciatis libero accusantium et numquam ipsam praesentium. Atque adipisci autem omnis nobis occaecati vel et. Error magni pariatur labore repudiandae voluptatum. Fugit est qui cumque pariatur.\",\n        \"published_year\": \"1982\",\n        \"image\": null\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Quia deserunt esse\",\n        \"author\": \"Natalie Aufderhar IV\",\n        \"description\": \"Consequuntur earum modi nesciunt et rerum quis. Quis explicabo delectus hic porro vitae voluptas beatae. Reprehenderit ut saepe qui ipsam rerum aliquid quae. Consequuntur accusantium harum at rerum enim mollitia.\",\n        \"published_year\": \"2022\",\n        \"image\": null\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Reprehenderit consequuntur nostrum\",\n        \"author\": \"Kira Funk\",\n        \"description\": \"Consectetur iste necessitatibus culpa. Ullam atque quas rem totam est impedit ut. Numquam asperiores qui quia voluptatum magni. Aspernatur dicta perspiciatis dolorum optio.\",\n        \"published_year\": \"1992\",\n        \"image\": null\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Voluptatem repellendus ea\",\n        \"author\": \"Dejuan Marks IV\",\n        \"description\": \"Eum ut aliquam adipisci accusamus magni. Tenetur laborum consequatur officiis praesentium aperiam odit et. Sed ipsam voluptatum est aperiam ratione neque.\",\n        \"published_year\": \"1989\",\n        \"image\": null\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Voluptatem reiciendis vitae qui\",\n        \"author\": \"Darwin Crona\",\n        \"description\": \"Debitis molestiae aut consequatur quo. Et et laboriosam aut odit odio et. Qui rem consequatur sunt nulla vel dolor inventore. Quia voluptatem animi qui sed earum.\",\n        \"published_year\": \"1998\",\n        \"image\": null\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Laborum quod exercitationem quas\",\n        \"author\": \"Dr. Adan Borer I\",\n        \"description\": \"Qui quo hic aut esse id. Laboriosam enim nisi tempora itaque omnis. Eligendi qui ut iure pariatur quis nam.\",\n        \"published_year\": \"1974\",\n        \"image\": null\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Occaecati et officia\",\n        \"author\": \"Raphael Wolf\",\n        \"description\": \"Est tempora minus nihil nostrum quos consequatur et sed. Sed aut molestiae ut doloribus omnis aut reiciendis qui. Explicabo et culpa minima natus eos. Sed sit rerum et aut.\",\n        \"published_year\": \"1973\",\n        \"image\": null\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Maiores alias fugit\",\n        \"author\": \"Gerda Zemlak\",\n        \"description\": \"Quas aliquam numquam sequi debitis mollitia aut earum. Earum neque quibusdam id assumenda alias est nihil. Rerum cupiditate est sequi et. Nisi sit et officiis aut voluptas est.\",\n        \"published_year\": \"1986\",\n        \"image\": \"images/W03NoM4AwBsdIkxW1pwdl68FRJ4wiU0QPJlgd4rv.jpg\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Recusandae aut ullam\",\n        \"author\": \"Valentine Towne\",\n        \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n        \"published_year\": \"2020\",\n        \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Books_MostLiked",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/most-liked",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"most-liked"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Books_MostLiked Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/most-liked",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"most-liked"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:08:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"Repellat modi asperiores\",\n        \"author\": \"Neil Heidenreich\",\n        \"description\": \"Blanditiis quisquam perspiciatis libero accusantium et numquam ipsam praesentium. Atque adipisci autem omnis nobis occaecati vel et. Error magni pariatur labore repudiandae voluptatum. Fugit est qui cumque pariatur.\",\n        \"tags\": \"qui, laborum, voluptas\",\n        \"category_id\": 3,\n        \"published_year\": \"1982\",\n        \"image\": null,\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"liked_by_users_count\": 1\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Voluptatem reiciendis vitae qui\",\n        \"author\": \"Darwin Crona\",\n        \"description\": \"Debitis molestiae aut consequatur quo. Et et laboriosam aut odit odio et. Qui rem consequatur sunt nulla vel dolor inventore. Quia voluptatem animi qui sed earum.\",\n        \"tags\": \"autem, est, adipisci\",\n        \"category_id\": 3,\n        \"published_year\": \"1998\",\n        \"image\": null,\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"liked_by_users_count\": 1\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Recusandae aut ullam\",\n        \"author\": \"Valentine Towne\",\n        \"description\": \"Tempora est non est aspernatur nobis qui. Sapiente nam laboriosam eius occaecati. Impedit quidem illo occaecati incidunt et minima. Unde veritatis soluta dicta laborum.\",\n        \"tags\": \"voluptate, eos, et\",\n        \"category_id\": 4,\n        \"published_year\": \"2020\",\n        \"image\": \"images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg\",\n        \"created_at\": \"2025-01-22T11:11:05.000000Z\",\n        \"updated_at\": \"2025-01-22T15:36:57.000000Z\",\n        \"liked_by_users_count\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Book_Copies",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/10/available-copies",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"10",
+								"available-copies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Book_Copies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/10/available-copies",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"10",
+										"available-copies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:56:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"available_copies\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Book_Liked",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/5/like",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"5",
+								"like"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Book_Liked",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/5/like",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"5",
+										"like"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:58:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book liked successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Book_Unlike",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/5/like",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"5",
+								"like"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Book_Unlike",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/5/like",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"5",
+										"like"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:59:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book unliked successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/profile",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/profile",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:49:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Fabian Cernak\",\n    \"email\": \"valami@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile_Name",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Fabian Cernak\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/profile/name",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"profile",
+								"name"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile_Name",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Fabian Cernak\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/profile/name",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile",
+										"name"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:49:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Name updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile_Email",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"valami@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/profile/email",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"profile",
+								"email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile_Email",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"valami@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/profile/email",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile",
+										"email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:49:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile_Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"password\": \"newpassword123\",\r\n    \"password_confirmation\": \"newpassword123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/profile/password",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"profile",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile_Password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"password\": \"fabi1234\",\r\n    \"password_confirmation\": \"fabi1234\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/profile/password",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:10:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Password updated successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Reviews_Book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/10/reviews",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"10",
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reviews_Book",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/10/reviews",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"10",
+										"reviews"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:55:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"user_id\": 9,\n        \"rating\": 4,\n        \"review\": \"Qui qui et exercitationem officiis. Voluptate eum sapiente pariatur praesentium eos vel corrupti quisquam. Praesentium et et vel consequatur quibusdam sint nulla cum.\",\n        \"review_date\": \"2025-01-06 17:03:08\",\n        \"user\": {\n            \"id\": 9,\n            \"name\": \"Roel Abbott DVM\"\n        }\n    },\n    {\n        \"user_id\": 2,\n        \"rating\": 3,\n        \"review\": \"Itvwas an okay book\",\n        \"review_date\": \"2025-01-21 22:05:49\",\n        \"user\": {\n            \"id\": 2,\n            \"name\": \"Fabian Cernak\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "SubmittingReview",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"review\" : \"Fantastic book!\",\r\n    \"rating\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cats.stud.vts.su.ac.rs/api/books/5/reviews",
+							"protocol": "https",
+							"host": [
+								"cats",
+								"stud",
+								"vts",
+								"su",
+								"ac",
+								"rs"
+							],
+							"path": [
+								"api",
+								"books",
+								"5",
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"review\" : \"Fantastic book!\",\r\n    \"rating\" : 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://192.168.0.15:8000/api/books/5/reviews",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"15"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"books",
+										"5",
+										"reviews"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "192.168.0.15:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:07:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Review submitted successfully\",\n    \"review\": {\n        \"user_id\": 2,\n        \"book_id\": 5,\n        \"rating\": 5,\n        \"review\": \"Fantastic book!\",\n        \"updated_at\": \"2025-01-26T15:07:39.000000Z\",\n        \"created_at\": \"2025-01-26T15:07:39.000000Z\",\n        \"id\": 14\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Teszt Teszt\",\r\n    \"email\" : \"teszt@teszt.com\",\r\n    \"password\" : \"tesztteszt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cats.stud.vts.su.ac.rs/api/register",
+					"protocol": "https",
+					"host": [
+						"cats",
+						"stud",
+						"vts",
+						"su",
+						"ac",
+						"rs"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Teszt Teszt\",\r\n    \"email\" : \"teszt@teszt.com\",\r\n    \"password\" : \"tesztteszt\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.15:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"15"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "192.168.0.15:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2025 14:50:49 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Registration successful, please check your email for verification link\",\n    \"status\": \"201 => Created\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"csernakfabian@gmail.com\",\r\n    \"password\" : \"fabi1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cats.stud.vts.su.ac.rs/api/login",
+					"protocol": "https",
+					"host": [
+						"cats",
+						"stud",
+						"vts",
+						"su",
+						"ac",
+						"rs"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"csernakfabian@gmail.com\",\r\n    \"password\" : \"fabi1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.15:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"15"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "192.168.0.15:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2025 15:10:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successful\",\n    \"token\": \"153|I3M4VjT4mkkb0WI3sfR3BlzVqv55rtApPUVqs9Zv29a28fb3\",\n    \"user\": {\n        \"name\": \"Fabian Cernak\",\n        \"email\": \"csernakfabian@gmail.com\"\n    },\n    \"status\": \"200 => OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cats.stud.vts.su.ac.rs/api/logout",
+					"protocol": "https",
+					"host": [
+						"cats",
+						"stud",
+						"vts",
+						"su",
+						"ac",
+						"rs"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Logout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.15:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"15"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "192.168.0.15:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 Jan 2025 15:11:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Logout successful\",\n    \"status\": \"200 => OK\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": " Authorization",
+			"value": "Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "Content-Type",
+			"value": "application/json",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "Accept",
+			"value": "application/json",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

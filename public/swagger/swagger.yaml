@@ -1,0 +1,1439 @@
+openapi: 3.0.0
+info:
+  title: Project
+  version: 1.0.0
+servers:
+  - url: https://cats.stud.vts.su.ac.rs
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: Reservations
+  - name: Books
+  - name: Profile
+  - name: Reviews
+paths:
+  /api/reservations/10:
+    post:
+      tags:
+        - Reservations
+      summary: Reservation_Add
+      requestBody:
+        content: {}
+
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:01:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Reservation added successfully
+  /api/reservations/book-copy/10:
+    delete:
+      tags:
+        - Reservations
+      summary: Reservation_Delete
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:02:42 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Reservation deleted successfully
+  /api/book-copies/5/reserve:
+    post:
+      tags:
+        - Reservations
+      summary: BookCopy_Reserved
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:04:10 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Book copy reserved successfully
+  /api/book-copies/5/available:
+    post:
+      tags:
+        - Reservations
+      summary: BookCopy_Available
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:04:59 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Book copy made available successfully
+  /api/book-copies/borrowed:
+    get:
+      tags:
+        - Books
+      summary: Books_Borrowed
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:52:53 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 14
+                  book_id: 10
+                  status: borrowed
+                  created_at: '2025-01-22T11:11:06.000000Z'
+                  updated_at: '2025-01-24T12:55:28.000000Z'
+                  book:
+                    id: 10
+                    title: Recusandae aut ullam
+                    author: Valentine Towne
+                    description: >-
+                      Tempora est non est aspernatur nobis qui. Sapiente nam
+                      laboriosam eius occaecati. Impedit quidem illo occaecati
+                      incidunt et minima. Unde veritatis soluta dicta laborum.
+                    published_year: '2020'
+                    image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+                - id: 10
+                  book_id: 4
+                  status: borrowed
+                  created_at: '2025-01-22T11:11:06.000000Z'
+                  updated_at: '2025-01-22T11:11:06.000000Z'
+                  book:
+                    id: 4
+                    title: Reprehenderit consequuntur nostrum
+                    author: Kira Funk
+                    description: >-
+                      Consectetur iste necessitatibus culpa. Ullam atque quas
+                      rem totam est impedit ut. Numquam asperiores qui quia
+                      voluptatum magni. Aspernatur dicta perspiciatis dolorum
+                      optio.
+                    published_year: '1992'
+                    image: null
+  /api/books/liked:
+    get:
+      tags:
+        - Books
+      summary: Books_Liked
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:51:57 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 10
+                  title: Recusandae aut ullam
+                  author: Valentine Towne
+                  description: >-
+                    Tempora est non est aspernatur nobis qui. Sapiente nam
+                    laboriosam eius occaecati. Impedit quidem illo occaecati
+                    incidunt et minima. Unde veritatis soluta dicta laborum.
+                  published_year: '2020'
+                  image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+                  pivot:
+                    user_id: 2
+                    book_id: 10
+                    created_at: '2025-01-24T11:48:46.000000Z'
+                    updated_at: '2025-01-24T11:48:46.000000Z'
+                - id: 2
+                  title: Repellat modi asperiores
+                  author: Neil Heidenreich
+                  description: >-
+                    Blanditiis quisquam perspiciatis libero accusantium et
+                    numquam ipsam praesentium. Atque adipisci autem omnis nobis
+                    occaecati vel et. Error magni pariatur labore repudiandae
+                    voluptatum. Fugit est qui cumque pariatur.
+                  published_year: '1982'
+                  image: null
+                  pivot:
+                    user_id: 2
+                    book_id: 2
+                    created_at: '2025-01-24T12:30:00.000000Z'
+                    updated_at: '2025-01-24T12:30:00.000000Z'
+                - id: 6
+                  title: Voluptatem reiciendis vitae qui
+                  author: Darwin Crona
+                  description: >-
+                    Debitis molestiae aut consequatur quo. Et et laboriosam aut
+                    odit odio et. Qui rem consequatur sunt nulla vel dolor
+                    inventore. Quia voluptatem animi qui sed earum.
+                  published_year: '1998'
+                  image: null
+                  pivot:
+                    user_id: 2
+                    book_id: 6
+                    created_at: '2025-01-24T17:23:26.000000Z'
+                    updated_at: '2025-01-24T17:23:26.000000Z'
+  /api/books/new:
+    get:
+      tags:
+        - Books
+      summary: Books_New
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:48:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 3
+                  title: Quia deserunt esse
+                  author: Natalie Aufderhar IV
+                  description: >-
+                    Consequuntur earum modi nesciunt et rerum quis. Quis
+                    explicabo delectus hic porro vitae voluptas beatae.
+                    Reprehenderit ut saepe qui ipsam rerum aliquid quae.
+                    Consequuntur accusantium harum at rerum enim mollitia.
+                  tags: aut, fugit, accusamus
+                  category_id: 5
+                  published_year: '2022'
+                  image: null
+                - id: 10
+                  title: Recusandae aut ullam
+                  author: Valentine Towne
+                  description: >-
+                    Tempora est non est aspernatur nobis qui. Sapiente nam
+                    laboriosam eius occaecati. Impedit quidem illo occaecati
+                    incidunt et minima. Unde veritatis soluta dicta laborum.
+                  tags: voluptate, eos, et
+                  category_id: 4
+                  published_year: '2020'
+                  image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+                - id: 6
+                  title: Voluptatem reiciendis vitae qui
+                  author: Darwin Crona
+                  description: >-
+                    Debitis molestiae aut consequatur quo. Et et laboriosam aut
+                    odit odio et. Qui rem consequatur sunt nulla vel dolor
+                    inventore. Quia voluptatem animi qui sed earum.
+                  tags: autem, est, adipisci
+                  category_id: 3
+                  published_year: '1998'
+                  image: null
+                - id: 4
+                  title: Reprehenderit consequuntur nostrum
+                  author: Kira Funk
+                  description: >-
+                    Consectetur iste necessitatibus culpa. Ullam atque quas rem
+                    totam est impedit ut. Numquam asperiores qui quia voluptatum
+                    magni. Aspernatur dicta perspiciatis dolorum optio.
+                  tags: fugit, odit, deleniti
+                  category_id: 1
+                  published_year: '1992'
+                  image: null
+                - id: 5
+                  title: Voluptatem repellendus ea
+                  author: Dejuan Marks IV
+                  description: >-
+                    Eum ut aliquam adipisci accusamus magni. Tenetur laborum
+                    consequatur officiis praesentium aperiam odit et. Sed ipsam
+                    voluptatum est aperiam ratione neque.
+                  tags: earum, voluptatem, fugiat
+                  category_id: 2
+                  published_year: '1989'
+                  image: null
+                - id: 9
+                  title: Maiores alias fugit
+                  author: Gerda Zemlak
+                  description: >-
+                    Quas aliquam numquam sequi debitis mollitia aut earum. Earum
+                    neque quibusdam id assumenda alias est nihil. Rerum
+                    cupiditate est sequi et. Nisi sit et officiis aut voluptas
+                    est.
+                  tags: similique, nostrum, assumenda
+                  category_id: 4
+                  published_year: '1986'
+                  image: images/W03NoM4AwBsdIkxW1pwdl68FRJ4wiU0QPJlgd4rv.jpg
+                - id: 2
+                  title: Repellat modi asperiores
+                  author: Neil Heidenreich
+                  description: >-
+                    Blanditiis quisquam perspiciatis libero accusantium et
+                    numquam ipsam praesentium. Atque adipisci autem omnis nobis
+                    occaecati vel et. Error magni pariatur labore repudiandae
+                    voluptatum. Fugit est qui cumque pariatur.
+                  tags: qui, laborum, voluptas
+                  category_id: 3
+                  published_year: '1982'
+                  image: null
+                - id: 7
+                  title: Laborum quod exercitationem quas
+                  author: Dr. Adan Borer I
+                  description: >-
+                    Qui quo hic aut esse id. Laboriosam enim nisi tempora itaque
+                    omnis. Eligendi qui ut iure pariatur quis nam.
+                  tags: sed, quod, vel
+                  category_id: 1
+                  published_year: '1974'
+                  image: null
+                - id: 8
+                  title: Occaecati et officia
+                  author: Raphael Wolf
+                  description: >-
+                    Est tempora minus nihil nostrum quos consequatur et sed. Sed
+                    aut molestiae ut doloribus omnis aut reiciendis qui.
+                    Explicabo et culpa minima natus eos. Sed sit rerum et aut.
+                  tags: molestiae, pariatur, unde
+                  category_id: 5
+                  published_year: '1973'
+                  image: null
+                - id: 1
+                  title: Est aut nulla in
+                  author: Pattie Altenwerth IV
+                  description: >-
+                    Et laborum explicabo est ut rerum et. Ab sed est aut et
+                    maxime eius ut. Mollitia cumque blanditiis laudantium sint.
+                    Quo rem sit perferendis eos non quibusdam. Non sed quibusdam
+                    quia.
+                  tags: mollitia, veritatis, neque
+                  category_id: 3
+                  published_year: '1971'
+                  image: null
+  /api/books/popular:
+    get:
+      tags:
+        - Books
+      summary: Books_Popular
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:50:25 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 3
+                  title: Quia deserunt esse
+                  author: Natalie Aufderhar IV
+                  description: >-
+                    Consequuntur earum modi nesciunt et rerum quis. Quis
+                    explicabo delectus hic porro vitae voluptas beatae.
+                    Reprehenderit ut saepe qui ipsam rerum aliquid quae.
+                    Consequuntur accusantium harum at rerum enim mollitia.
+                  tags: aut, fugit, accusamus
+                  category_id: 5
+                  published_year: '2022'
+                  image: null
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T11:11:05.000000Z'
+                  reviews_count: 3
+                  average_rating: 4.33
+                  reviews:
+                    - book_id: 3
+                      average_rating: '4.3333'
+                - id: 10
+                  title: Recusandae aut ullam
+                  author: Valentine Towne
+                  description: >-
+                    Tempora est non est aspernatur nobis qui. Sapiente nam
+                    laboriosam eius occaecati. Impedit quidem illo occaecati
+                    incidunt et minima. Unde veritatis soluta dicta laborum.
+                  tags: voluptate, eos, et
+                  category_id: 4
+                  published_year: '2020'
+                  image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T15:36:57.000000Z'
+                  reviews_count: 2
+                  average_rating: 3.5
+                  reviews:
+                    - book_id: 10
+                      average_rating: '3.5000'
+                - id: 2
+                  title: Repellat modi asperiores
+                  author: Neil Heidenreich
+                  description: >-
+                    Blanditiis quisquam perspiciatis libero accusantium et
+                    numquam ipsam praesentium. Atque adipisci autem omnis nobis
+                    occaecati vel et. Error magni pariatur labore repudiandae
+                    voluptatum. Fugit est qui cumque pariatur.
+                  tags: qui, laborum, voluptas
+                  category_id: 3
+                  published_year: '1982'
+                  image: null
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T11:11:05.000000Z'
+                  reviews_count: 2
+                  average_rating: 3
+                  reviews:
+                    - book_id: 2
+                      average_rating: '3.0000'
+  /api/books:
+    get:
+      tags:
+        - Books
+      summary: Books_All
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:49:01 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 1
+                  title: Est aut nulla in
+                  author: Pattie Altenwerth IV
+                  description: >-
+                    Et laborum explicabo est ut rerum et. Ab sed est aut et
+                    maxime eius ut. Mollitia cumque blanditiis laudantium sint.
+                    Quo rem sit perferendis eos non quibusdam. Non sed quibusdam
+                    quia.
+                  published_year: '1971'
+                  image: null
+                - id: 2
+                  title: Repellat modi asperiores
+                  author: Neil Heidenreich
+                  description: >-
+                    Blanditiis quisquam perspiciatis libero accusantium et
+                    numquam ipsam praesentium. Atque adipisci autem omnis nobis
+                    occaecati vel et. Error magni pariatur labore repudiandae
+                    voluptatum. Fugit est qui cumque pariatur.
+                  published_year: '1982'
+                  image: null
+                - id: 3
+                  title: Quia deserunt esse
+                  author: Natalie Aufderhar IV
+                  description: >-
+                    Consequuntur earum modi nesciunt et rerum quis. Quis
+                    explicabo delectus hic porro vitae voluptas beatae.
+                    Reprehenderit ut saepe qui ipsam rerum aliquid quae.
+                    Consequuntur accusantium harum at rerum enim mollitia.
+                  published_year: '2022'
+                  image: null
+                - id: 4
+                  title: Reprehenderit consequuntur nostrum
+                  author: Kira Funk
+                  description: >-
+                    Consectetur iste necessitatibus culpa. Ullam atque quas rem
+                    totam est impedit ut. Numquam asperiores qui quia voluptatum
+                    magni. Aspernatur dicta perspiciatis dolorum optio.
+                  published_year: '1992'
+                  image: null
+                - id: 5
+                  title: Voluptatem repellendus ea
+                  author: Dejuan Marks IV
+                  description: >-
+                    Eum ut aliquam adipisci accusamus magni. Tenetur laborum
+                    consequatur officiis praesentium aperiam odit et. Sed ipsam
+                    voluptatum est aperiam ratione neque.
+                  published_year: '1989'
+                  image: null
+                - id: 6
+                  title: Voluptatem reiciendis vitae qui
+                  author: Darwin Crona
+                  description: >-
+                    Debitis molestiae aut consequatur quo. Et et laboriosam aut
+                    odit odio et. Qui rem consequatur sunt nulla vel dolor
+                    inventore. Quia voluptatem animi qui sed earum.
+                  published_year: '1998'
+                  image: null
+                - id: 7
+                  title: Laborum quod exercitationem quas
+                  author: Dr. Adan Borer I
+                  description: >-
+                    Qui quo hic aut esse id. Laboriosam enim nisi tempora itaque
+                    omnis. Eligendi qui ut iure pariatur quis nam.
+                  published_year: '1974'
+                  image: null
+                - id: 8
+                  title: Occaecati et officia
+                  author: Raphael Wolf
+                  description: >-
+                    Est tempora minus nihil nostrum quos consequatur et sed. Sed
+                    aut molestiae ut doloribus omnis aut reiciendis qui.
+                    Explicabo et culpa minima natus eos. Sed sit rerum et aut.
+                  published_year: '1973'
+                  image: null
+                - id: 9
+                  title: Maiores alias fugit
+                  author: Gerda Zemlak
+                  description: >-
+                    Quas aliquam numquam sequi debitis mollitia aut earum. Earum
+                    neque quibusdam id assumenda alias est nihil. Rerum
+                    cupiditate est sequi et. Nisi sit et officiis aut voluptas
+                    est.
+                  published_year: '1986'
+                  image: images/W03NoM4AwBsdIkxW1pwdl68FRJ4wiU0QPJlgd4rv.jpg
+                - id: 10
+                  title: Recusandae aut ullam
+                  author: Valentine Towne
+                  description: >-
+                    Tempora est non est aspernatur nobis qui. Sapiente nam
+                    laboriosam eius occaecati. Impedit quidem illo occaecati
+                    incidunt et minima. Unde veritatis soluta dicta laborum.
+                  published_year: '2020'
+                  image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+  /api/books/most-liked:
+    get:
+      tags:
+        - Books
+      summary: Books_MostLiked
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:08:49 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 2
+                  title: Repellat modi asperiores
+                  author: Neil Heidenreich
+                  description: >-
+                    Blanditiis quisquam perspiciatis libero accusantium et
+                    numquam ipsam praesentium. Atque adipisci autem omnis nobis
+                    occaecati vel et. Error magni pariatur labore repudiandae
+                    voluptatum. Fugit est qui cumque pariatur.
+                  tags: qui, laborum, voluptas
+                  category_id: 3
+                  published_year: '1982'
+                  image: null
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T11:11:05.000000Z'
+                  liked_by_users_count: 1
+                - id: 6
+                  title: Voluptatem reiciendis vitae qui
+                  author: Darwin Crona
+                  description: >-
+                    Debitis molestiae aut consequatur quo. Et et laboriosam aut
+                    odit odio et. Qui rem consequatur sunt nulla vel dolor
+                    inventore. Quia voluptatem animi qui sed earum.
+                  tags: autem, est, adipisci
+                  category_id: 3
+                  published_year: '1998'
+                  image: null
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T11:11:05.000000Z'
+                  liked_by_users_count: 1
+                - id: 10
+                  title: Recusandae aut ullam
+                  author: Valentine Towne
+                  description: >-
+                    Tempora est non est aspernatur nobis qui. Sapiente nam
+                    laboriosam eius occaecati. Impedit quidem illo occaecati
+                    incidunt et minima. Unde veritatis soluta dicta laborum.
+                  tags: voluptate, eos, et
+                  category_id: 4
+                  published_year: '2020'
+                  image: images/7Qin3paPscnnmlKznJ6HMB0pRh5uyE4fPgz3cnyO.jpg
+                  created_at: '2025-01-22T11:11:05.000000Z'
+                  updated_at: '2025-01-22T15:36:57.000000Z'
+                  liked_by_users_count: 1
+  /api/books/10/available-copies:
+    get:
+      tags:
+        - Books
+      summary: Book_Copies
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:56:07 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                available_copies: 2
+  /api/books/5/like:
+    post:
+      tags:
+        - Books
+      summary: Book_Liked
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:58:10 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Book liked successfully
+    delete:
+      tags:
+        - Books
+      summary: Book_Unlike
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:59:10 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Book unliked successfully
+  /api/profile:
+    get:
+      tags:
+        - Profile
+      summary: Profile
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:49:41 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                name: Fabian Cernak
+                email: valami@gmail.com
+  /api/profile/name:
+    put:
+      tags:
+        - Profile
+      summary: Profile_Name
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Fabian Cernak
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:49:57 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Name updated successfully
+  /api/profile/email:
+    put:
+      tags:
+        - Profile
+      summary: Profile_Email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: valami@gmail.com
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:49:47 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Email updated successfully
+  /api/profile/password:
+    put:
+      tags:
+        - Profile
+      summary: Profile_Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: newpassword123
+                password_confirmation: newpassword123
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:10:20 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Password updated successfully
+  /api/books/10/reviews:
+    get:
+      tags:
+        - Reviews
+      summary: Reviews_Book
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:55:06 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - user_id: 9
+                  rating: 4
+                  review: >-
+                    Qui qui et exercitationem officiis. Voluptate eum sapiente
+                    pariatur praesentium eos vel corrupti quisquam. Praesentium
+                    et et vel consequatur quibusdam sint nulla cum.
+                  review_date: '2025-01-06 17:03:08'
+                  user:
+                    id: 9
+                    name: Roel Abbott DVM
+                - user_id: 2
+                  rating: 3
+                  review: Itvwas an okay book
+                  review_date: '2025-01-21 22:05:49'
+                  user:
+                    id: 2
+                    name: Fabian Cernak
+  /api/books/5/reviews:
+    post:
+      tags:
+        - Reviews
+      summary: SubmittingReview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                review: Fantastic book!
+                rating: 5
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:07:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Review submitted successfully
+                review:
+                  user_id: 2
+                  book_id: 5
+                  rating: 5
+                  review: Fantastic book!
+                  updated_at: '2025-01-26T15:07:39.000000Z'
+                  created_at: '2025-01-26T15:07:39.000000Z'
+                  id: 14
+  /api/register:
+    post:
+      tags:
+        - default
+      summary: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Teszt Teszt
+                email: teszt@teszt.com
+                password: tesztteszt
+      responses:
+        '201':
+          description: Created
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 14:50:49 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: >-
+                  Registration successful, please check your email for
+                  verification link
+                status: 201 => Created
+  /api/login:
+    post:
+      tags:
+        - default
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: csernakfabian@gmail.com
+                password: fabi12345
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:10:43 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Login successful
+                token: 153|I3M4VjT4mkkb0WI3sfR3BlzVqv55rtApPUVqs9Zv29a28fb3
+                user:
+                  name: Fabian Cernak
+                  email: csernakfabian@gmail.com
+                status: 200 => OK
+  /api/logout:
+    post:
+      tags:
+        - default
+      summary: Logout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer 152|ZHqx9GQgvTWJQyhEaybzmJ8NwEC96Zu2ihJ3VX9689ec8196
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 192.168.0.15:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Sun, 26 Jan 2025 15:11:15 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Logout successful
+                status: 200 => OK

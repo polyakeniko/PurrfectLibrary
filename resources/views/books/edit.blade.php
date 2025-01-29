@@ -64,45 +64,13 @@
 
 
                         <div class="mb-4">
-                            <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                            <div class="custom-file-input">
-                                <button type="button" class="button custom-button">Choose File</button>
-                                <input type="file" name="image" id="image">
-                            </div>
+                            <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none" type="file" name="image" id="image">
                         </div>
 
                         <button type="submit" class="button px-4 py-2 rounded text-white">Update Book</button>
                     </form>
-                    <style>
-                        .custom-file-input {
-                            position: relative;
-                            overflow: hidden;
-                            display: inline-block;
-                        }
 
-                        .custom-file-input input[type="file"] {
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            margin: 0;
-                            padding: 0;
-                            font-size: 20px;
-                            cursor: pointer;
-                            opacity: 0;
-                            filter: alpha(opacity=0);
-                        }
-
-                        .custom-file-input .custom-button {
-
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            cursor: pointer;
-                            border-radius: 5px;
-                        }
-
-
-                    </style>
                 </div>
             </div>
         </div>

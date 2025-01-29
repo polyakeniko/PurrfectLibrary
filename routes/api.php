@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 
+Route::get('/api', function () {
+    return view('swagger.index');
+});
 
 
 Route::post('register', [Api_AuthController::class, 'register']);
@@ -17,6 +20,7 @@ Route::get('books/{book}/reviews', [Api_BooksController::class, 'getBookReviews'
 Route::get('books/{book}/available-copies', [Api_BooksController::class, 'getAvailableCopies']);
 Route::get('verify-email', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
 Route::get('books/most-liked', [Api_BooksController::class, 'getMostLikedBooks']);
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', [Api_ProfileController::class, 'show']);

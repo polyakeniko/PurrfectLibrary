@@ -84,3 +84,7 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(functio
 //qr codes
 Route::get('/qr-codes', [QrCodeController::class, 'index'])->name('qr-codes.index');
 Route::post('/qr-codes/{book}', [QrCodeController::class, 'generateQrCode'])->name('qr-codes.store');
+
+Route::get('/api', function () {
+    return view('swagger.index');
+});

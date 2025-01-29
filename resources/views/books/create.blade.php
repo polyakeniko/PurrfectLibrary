@@ -61,11 +61,8 @@
 
 
                         <div class="mb-4">
-                            <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                            <div class="custom-file-input">
-                                <button type="button" class="button custom-button">Choose File</button>
-                                <input type="file" name="image" id="image">
-                            </div>
+                            <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none" type="file" name="image" id="image">
                         </div>
 
                         <button type="submit" class="button text-white px-4 py-2 rounded">Add Book</button>

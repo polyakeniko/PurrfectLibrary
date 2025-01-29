@@ -5,7 +5,7 @@ import {
   View
 } from "react-native";
 import { useEffect, useState } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 
 export default function ScanScreen() {
@@ -27,7 +27,7 @@ export default function ScanScreen() {
       const item = JSON.parse(data);
 
       // Store the scanned data in AsyncStorage
-      await AsyncStorage.setItem('scannedBook', data);
+      await SecureStore.setItem('scannedBook', data);
 
       // Navigate to the BookDetail screen with the book data
       navigation.navigate('BookDetail', { book: item });

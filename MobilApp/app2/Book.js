@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ActivityIndicator, SectionList, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import CustomNavBar from './CustomNavBar';
 import defaultImage from './assets/default.jpg';
 
@@ -23,7 +23,7 @@ const BookScreen = ({ navigation }) => {
 
   const fetchToken = async () => {
     try {
-      const storedToken = await AsyncStorage.getItem('token');
+      const storedToken = await SecureStore.getItemAsync('token');
       if (storedToken) {
         setToken(storedToken);
       }
@@ -48,7 +48,7 @@ const BookScreen = ({ navigation }) => {
         console.error('Unexpected response data:', response.data);
       }
     } catch (error) {
-      console.error('Error fetching borrowed books:', error.response ? error.response.data : error.message);
+      console.error('Error fetching borrowed books:', error);
     } finally {
       setLoading(false);
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { UserProvider } from './UserContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import LoginScreen from './Login';
 import HomeScreen from './Home';
 import BookScreen from './Book';
@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const loggedIn = await AsyncStorage.getItem('loggedIn');
+      const loggedIn = await SecureStore.getItemAsync('loggedIn');
       if (loggedIn) {
         setInitialRoute('Home');
       }

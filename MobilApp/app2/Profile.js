@@ -4,7 +4,7 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomNavBar from './CustomNavBar';
 import { UserContext } from './UserContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 const ProfileScreen = ({ navigation }) => {
   const { user, token, clearUser } = useContext(UserContext);
@@ -110,7 +110,7 @@ const ProfileScreen = ({ navigation }) => {
       });
 
       if (response.status === 200) {
-        await AsyncStorage.removeItem('token'); // Clear the token from AsyncStorage
+        await SecureStore.removeItem('token'); // Clear the token from AsyncStorage
         clearUser(); // Clear the user data from the context
         navigation.reset({
           index: 0,
@@ -121,7 +121,7 @@ const ProfileScreen = ({ navigation }) => {
       }
     } catch (error) {
       console.error('Logout error:', error.response ? error.response.data : error.message);
-      await AsyncStorage.removeItem('token');
+      await SecureStore.removeItem('token');
       clearUser();
       navigation.reset({
         index: 0,

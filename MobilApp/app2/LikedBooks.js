@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ActivityIndicator, SectionList, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import CustomNavBar from './CustomNavBar';
 import defaultImage from './assets/default.jpg';
 
@@ -22,7 +22,7 @@ const LikedBooksScreen = ({ navigation }) => {
 
   const fetchToken = async () => {
     try {
-      const storedToken = await AsyncStorage.getItem('token');
+      const storedToken = await SecureStore.getItem('token');
       if (storedToken) {
         setToken(storedToken);
       }

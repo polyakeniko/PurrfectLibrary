@@ -5,7 +5,7 @@ import { UserContext } from './UserContext';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import defaultImage from './assets/default.jpg';
-
+import * as SecureStore from 'expo-secure-store';
 
 const HomeScreen = ({ navigation }) => {
   const { user, token } = useContext(UserContext);
@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
         setMostLikedBooks(mostLikedResponse.data);
         setAllBooks(allBooksResponse.data);
       } catch (error) {
-        console.error('Error fetching books:', error);
+        
       } finally {
         setLoading(false);
       }
@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
   }, [token]);
 
   const getFullImageUrl = (relativePath) => {
-    return `https://cats.stud.vts.su.ac.rs/storage/${relativePath}`;
+    return `http://cats.stud.vts.su.ac.rs/storage/${relativePath}`;
   };
 
   const renderBookItemPopular = ({ item }) => (

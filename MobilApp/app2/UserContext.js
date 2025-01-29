@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 export const UserContext = createContext();
 
@@ -10,8 +10,8 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const userData = await AsyncStorage.getItem('user');
-        const userToken = await AsyncStorage.getItem('token');
+        const userData = await SecureStore.getItem('user');
+        const userToken = await SecureStore.getItem('token');
         if (userData && userToken) {
           setUser(JSON.parse(userData));
           setToken(userToken);
@@ -27,8 +27,8 @@ export const UserProvider = ({ children }) => {
   const saveUser = async (user, token) => {
     try {
       if (user && token) {
-        await AsyncStorage.setItem('user', JSON.stringify(user));
-        await AsyncStorage.setItem('token', token);
+        await SecureStore.setItem('user', JSON.stringify(user));
+        await SecureStore.setItem('token', token);
         setUser(user);
         setToken(token);
       } else {
@@ -41,8 +41,8 @@ export const UserProvider = ({ children }) => {
 
   const clearUser = async () => {
     try {
-      await AsyncStorage.removeItem('user');
-      await AsyncStorage.removeItem('token');
+      await SecureStore.removeItem('user');
+      await SecureStore.removeItem('token');
       setUser(null);
       setToken(null);
     } catch (error) {

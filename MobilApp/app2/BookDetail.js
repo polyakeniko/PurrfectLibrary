@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator, TextInput, TouchableOpacity, Modal, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import CustomNavBar from './CustomNavBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Toast from 'react-native-toast-message';
@@ -26,7 +26,7 @@ const BookDetailScreen = ({ route, navigation }) => {
   };
 
   const fetchToken = async () => {
-    const storedToken = await AsyncStorage.getItem('token');
+    const storedToken = await SecureStore.getItem('token');
     if (storedToken) {
       setToken(storedToken);
     }
@@ -54,7 +54,7 @@ const BookDetailScreen = ({ route, navigation }) => {
 
   const loadLikedState = async () => {
     try {
-      const likedBooks = await AsyncStorage.getItem('likedBooks');
+      const likedBooks = await SecureStore.getItem('likedBooks');
       if (likedBooks) {
         const likedBooksArray = JSON.parse(likedBooks);
         setLiked(likedBooksArray.includes(book.id));
@@ -66,7 +66,7 @@ const BookDetailScreen = ({ route, navigation }) => {
 
   const saveLikedState = async (likedState) => {
     try {
-      const likedBooks = await AsyncStorage.getItem('likedBooks');
+      const likedBooks = await SecureStore.getItem('likedBooks');
       let likedBooksArray = likedBooks ? JSON.parse(likedBooks) : [];
       if (likedState) {
         likedBooksArray.push(book.id);
@@ -81,7 +81,7 @@ const BookDetailScreen = ({ route, navigation }) => {
 
   const loadReservationState = async () => {
     try {
-      const reservedBooks = await AsyncStorage.getItem('reservedBooks');
+      const reservedBooks = await SecureStore.getItem('reservedBooks');
       if (reservedBooks) {
         const reservedBooksArray = JSON.parse(reservedBooks);
         const reservation = reservedBooksArray.find(item => item.bookId === book.id);
@@ -97,7 +97,7 @@ const BookDetailScreen = ({ route, navigation }) => {
 
   const saveReservationState = async (reservedState, reservationId = null) => {
     try {
-      const reservedBooks = await AsyncStorage.getItem('reservedBooks');
+      const reservedBooks = await SecureStore.getItem('reservedBooks');
       let reservedBooksArray = reservedBooks ? JSON.parse(reservedBooks) : [];
       if (reservedState) {
         reservedBooksArray.push({ bookId: book.id, reservationId });

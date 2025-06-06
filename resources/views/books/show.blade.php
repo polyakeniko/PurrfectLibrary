@@ -1,3 +1,4 @@
+@php use App\Models\BookForSale; @endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -52,6 +53,51 @@
                             @endif
                             @elseif($availableCopies < 0)
                                 <p class="text-red-700">No available copies to loan or reserve.</p>
+                            @endif
+                            @php
+                                $bookForSale = BookForSale::where('book_id', $book->id)->where('is_active', true)->first();
+                            @endphp
+                            @if($bookForSale)
+                                <div class="mt-4">
+                                    <button
+                                        type="button"
+                                        class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+                                        onclick="addToCart({{ $bookForSale->id }}, '{{ $book->title }}', {{ $bookForSale->price }}, {{ $bookForSale->stock }})"
+                                    >
+                                        Buy this Book for ${{ number_format($bookForSale->price, 2) }}
+                                    </button>
+                                    <script>
+                                        function addToCart(id, title, price, stock) {
+                                            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                                            let item = cart.find(i => i.id === id);
+                                            if (item) {
+                                                if (item.quantity >= stock) {
+                                                    alert('You have already added the maximum available stock for this book.');
+                                                    return;
+                                                }
+                                                item.quantity += 1;
+                                            } else {
+                                                cart.push({ id, title, price, stock, quantity: 1 });
+                                            }
+                                            localStorage.setItem('cart', JSON.stringify(cart));
+                                            updateCartCount()
+                                            alert('Added to cart!');
+                                        }
+                                        function updateCartCount() {
+                                            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                                            const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                                            const badge = document.getElementById('cart-count');
+                                            if (badge) {
+                                                badge.textContent = cartCount;
+                                            }
+                                        }
+                                    </script>
+                                    <p class="mt-2 text-gray-700"><strong> Stock:</strong> {{ $bookForSale->stock }}</p>
+                                </div>
+                                <a href="{{ route('books-for-sale.edit', $book->id) }}"
+                                   class="inline-block mt-3 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                                    Edit Sale
+                                </a>
                             @endif
                     @endauth
 

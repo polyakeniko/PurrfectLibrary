@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\BookApiController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookForSaleController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\ReservationController;
@@ -19,12 +22,23 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
 Route::get('/', [AdminSettingController::class, 'getDescription'])->name('home');
+Route::get('/books-for-sale', [BookForSaleController::class, 'index'])->name('books-for-sale.index');
+Route::get('/books-for-sale/{bookForSale}/buy', [BookForSaleController::class, 'showBuyForm'])->name('books-for-sale.buy.form');
+Route::post('/books-for-sale/{bookForSale}/buy', [BookForSaleController::class, 'buy'])->name('books-for-sale.buy');
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart.show');
+Route::post('/cart/checkout', [BookForSaleController::class, 'checkout'])->name('cart.checkout');
 //user
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/borrowed', [UserController::class, 'show'])->name('user.borrowed');
     Route::post('/books/{book}/reserve', [BookController::class, 'reserve'])->name('books.reserve');
     Route::delete('/books/{book}/undoReservation', [BookController::class, 'undoReservation'])->name('books.undoReservation');
     Route::post('/books/{book}/review', [BookController::class, 'storeReview'])->name('books.review');
+    Route::get('/partners', [PartnerController::class, 'showForm'])->name('partners.form');
+    Route::post('/partners', [PartnerController::class, 'register'])->name('partners.register');
+    Route::get('/partners/success', [PartnerController::class, 'success'])->name('partners.success');
+    Route::get('/partners/regenerate-api-key', [PartnerController::class, 'regenerateApiKey'])->name('partners.regenerateApiKey');
 });
 
 //librarian
@@ -45,6 +59,10 @@ Route::post('/loans/{loan}/unreturn', [LoanController::class, 'markAsNotReturned
 
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 Route::post('/reservations/{reservation}/status', [ReservationController::class, 'updateStatus'])->name('reservations.updateStatus');
+
+Route::get('/books-for-sale/create', [BookForSaleController::class, 'create'])->name('books-for-sale.create');
+Route::post('/books-for-sale', [BookForSaleController::class, 'store'])->name('books-for-sale.store');
+Route::resource('books-for-sale', BookForSaleController::class)->only(['edit', 'update']);
 });
 
 Route::middleware('auth')->group(function () {

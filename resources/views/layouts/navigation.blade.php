@@ -18,12 +18,18 @@
                     <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
                         {{ __('Books') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('books-for-sale.index')" :active="request()->routeIs('books.for-sale')">
+                        {{ __('Buy') }}
+                    </x-nav-link>
                     @if (Route::has('login'))
                         @auth
                             @if(Auth::user()->role == 'user')
                             <x-nav-link :href="route('user.borrowed')" :active="request()->routeIs('user.borrowed')">
                                 {{ __('Borrowed Books') }}
                             </x-nav-link>
+                                <x-nav-link :href="route('partners.form')" :active="request()->routeIs('partners.form')">
+                                    {{ __('For partners') }}
+                                </x-nav-link>
                             @elseif(Auth::user()->role == 'librarian')
                             <x-nav-link :href="route('books.create')" :active="request()->routeIs('books.create')">
                                 {{ __('Add A New Book') }}
@@ -61,6 +67,18 @@
             @auth
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
+<span class="relative inline-block">
+    <!-- Cart Icon (Heroicons outline) -->
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007.5 17h9a1 1 0 00.9-1.45L17 13M7 13V6a1 1 0 011-1h3m4 0h2a1 1 0 011 1v7"></path>
+    </svg>
+    <!-- Badge -->
+    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1.5 py-0.5">
+        0
+    </span>
+</span>
+                    </x-nav-link>
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -201,3 +219,13 @@
         </div>
     </div>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        const badge = document.getElementById('cart-count');
+        if (badge) {
+            badge.textContent = cartCount;
+        }
+    });
+</script>

@@ -53,4 +53,8 @@ class Book extends Model
         return $this->hasOne(BookQrCode::class);
     }
 
+    public function bookForSale()
+    {
+        return $this->hasOne(\App\Models\BookForSale::class, 'book_id');
+    }
 }

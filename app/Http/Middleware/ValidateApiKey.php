@@ -15,13 +15,16 @@ class ValidateApiKey
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
 
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        $apiKey = $request->header('X-API-KEY');
+        $apiKey = $request->header('api_key');
+        $partner = Partner::where('api_key', $apiKey)->where('is_active', true)->first();
 
-        if (!$apiKey || !Partner::where('api_key', $apiKey)->exists()) {
-            return response()->json(['error' => 'Invalid API key'], 403);
+        if (!$partner) {
+            return response()->json(['message' => 'Unauthorized. Invalid or missing API key.'], 401);
         }
+
+        $request->attributes->set('partner', $partner);
 
         return $next($request);
     }

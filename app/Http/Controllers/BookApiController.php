@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApiLog;
 use App\Models\Book;
 use App\Models\BookForSale;
 use App\Models\Order;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class BookApiController extends Controller
 {
-    public function getPopularBooks()
+    public function getPopularBooks(Request $request)
     {
         $books = Book::with(['reviews' => function ($query) {
             $query->select('book_id', \DB::raw('AVG(rating) as average_rating'))
@@ -31,12 +32,23 @@ class BookApiController extends Controller
         });
 
         $sortedBooks = $books->sortByDesc('average_rating')->take(3); // Sort by average_rating and take top 3
+        $response = response()->json($sortedBooks->values()->all(), 200);
+        $partner = $request->attributes->get('partner');
+        ApiLog::create([
+            'partner_id'     => $partner->id,
+            'ip_address'     => $request->ip(),
+            'user_agent'     => $request->userAgent(),
+            'endpoint'       => $request->path(),
+            'method'         => $request->method(),
+            'request_data'   => json_encode($request->all()),
+            'response_status'=> $response->getStatusCode(),
+        ]);
 
         return response()->json($sortedBooks->values()->all(),  200);
     }
 
     // Fetch the newest books
-    public function getNewestBooks()
+    public function getNewestBooks(Request $request)
     {
         $books = Book::whereExists(function ($queryBuilder) {
             $queryBuilder->select(\DB::raw(1))
@@ -48,10 +60,22 @@ class BookApiController extends Controller
             ->take(10)
             ->get();
 
+        $response = response()->json($books->values()->all(), 200);
+        $partner = $request->attributes->get('partner');
+
+        ApiLog::create([
+            'partner_id'     => $partner->id,
+            'ip_address'     => $request->ip(),
+            'user_agent'     => $request->userAgent(),
+            'endpoint'       => $request->path(),
+            'method'         => $request->method(),
+            'request_data'   => json_encode($request->all()),
+            'response_status'=> $response->getStatusCode(),
+        ]);
+
         return response()->json($books);
     }
 
-    // Search books by title or author
     public function searchBooks(Request $request)
     {
         $query = $request->input('query');
@@ -66,6 +90,19 @@ class BookApiController extends Controller
                     ->whereColumn('book_for_sales.book_id', 'books.id');
             })
             ->get();
+
+        $response = response()->json($books->values()->all(), 200);
+        $partner = $request->attributes->get('partner');
+
+        ApiLog::create([
+            'partner_id'     => $partner->id,
+            'ip_address'     => $request->ip(),
+            'user_agent'     => $request->userAgent(),
+            'endpoint'       => $request->path(),
+            'method'         => $request->method(),
+            'request_data'   => json_encode($request->all()),
+            'response_status'=> $response->getStatusCode(),
+        ]);
         return response()->json($books);
     }
 
@@ -122,6 +159,19 @@ class BookApiController extends Controller
                 $item['book_for_sale']->save();
             }
         }
+
+        $response = response()->json($books->values()->all(), 200);
+        $partner = $request->attributes->get('partner');
+
+        ApiLog::create([
+            'partner_id'     => $partner->id,
+            'ip_address'     => $request->ip(),
+            'user_agent'     => $request->userAgent(),
+            'endpoint'       => $request->path(),
+            'method'         => $request->method(),
+            'request_data'   => json_encode($request->all()),
+            'response_status'=> $response->getStatusCode(),
+        ]);
 
         return response()->json([
             'message' => 'Order placed successfully!',
